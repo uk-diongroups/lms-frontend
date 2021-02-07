@@ -123,6 +123,7 @@ const Register = ({ register, match, success, history }) => {
 					onChange={handleChange}
 					error={errors?.password}
 					value={values?.password}
+					placeholder='password'
 				/>
 				<p className='terms'>
 					<span className='check'>
