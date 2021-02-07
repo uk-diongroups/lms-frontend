@@ -94,6 +94,7 @@ const Login = ({ login, match, success }) => {
 					onChange={handleChange}
 					error={errors?.password}
 					value={values?.password}
+					placeholder='password'
 				/>
 				<CenterDiv>
 					<Button type='submit' disabled={loading}>
