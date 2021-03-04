@@ -11,6 +11,7 @@ const InputWrapper = styled.div`
 		margin-bottom: 7px;
 		display: block;
 		font-size: 0.9rem;
+		color: #b0bac9;
 	}
 	& > div {
 		position: relative;
@@ -36,12 +37,11 @@ const Input = styled.input`
 	position: relative;
 	width: 100%;
 	min-width: 0;
-	padding: 10px 14px;
-
+	padding: 13px 16px;
 	border: 1px solid #d0dae9;
 	border-radius: 4px;
-	color: black;
-	font-size: 13px;
+	color: #98a9bc;
+	font-size: 0.875rem;
 	line-height: 1.5715;
 	background-color: #fff;
 	background-image: none;

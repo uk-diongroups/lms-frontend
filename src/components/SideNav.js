@@ -1,82 +1,89 @@
 import React from 'react';
+import generateID from 'uuid/v4';
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
+import icons from 'assets/icons/icon-collections.svg';
 
+const sideMenus = [
+	{
+		menuName: 'Home',
+		iconName: 'home',
+		path: '/app/home',
+	},
+	{
+		menuName: 'Dashboard',
+		iconName: 'dashboard',
+		path: '/app/dashboard/',
+	},
+	{
+		menuName: 'My Courses',
+		iconName: 'courses',
+		path: '/app/courses',
+	},
+	{
+		menuName: 'Assessments',
+		iconName: 'assessments',
+		path: '/app/assessment',
+	},
+
+	{
+		menuName: 'Settings',
+		iconName: 'settings',
+		path: '/app/settings',
+	},
+];
 const Wrapper = styled.div`
 	position: relative;
-	max-width: 230px;
-	width: 100%;
-`;
+	padding-left: 17px;
+	padding-right: 9px;
+	width: 275px;
 
-const TopBar = styled.div`
-	height: 100px;
-	padding: 0 20px;
-	display: flex;
-	align-items: center;
-	background: #ffffff;
-	box-shadow: 0px 8px 30px rgba(0, 5, 58, 0.05);
-	border-radius: 15px;
+	ul {
+		margin-top: 34px;
+		li {
+			width: 100%;
 
-	p {
-		color: #68768b;
-		font-size: 0.85rem;
-	}
-	span {
-		display: block;
-		color: #27067b;
-		margin-top: 5px;
-		font-size: 1.4rem;
-		font-weight: bold;
-	}
-`;
-
-const BottomBar = styled.div`
-	background: #ffffff;
-	height: 50vh;
-	box-shadow: 0px 8px 30px rgba(0, 5, 58, 0.05);
-	border-radius: 15px;
-	margin-top: 20px;
-	padding: 10px 20px;
-	h5 {
-		color: #68768b;
-		font-size: 0.85rem;
-	}
-	h3 {
-		color: #011632;
-		margin-top: 3px;
-		font-size: 1rem;
-		font-weight: bold;
-		margin-bottom: 35px;
-	}
-	.status {
-		display: flex;
-		border-bottom: 1px solid #d8d8d8;
-		margin-bottom: 35px;
+			a {
+				color: #4f5d74;
+				display: block;
+				border-radius: 0px 100px 100px 0px;
+				padding: 13px 0px;
+				padding-left: 22px;
+				display: flex;
+				align-items: center;
+				font-size: 1rem;
+				font-family: 'Rubik', sans-serif;
+				&.active {
+					background: rgba(134, 147, 201, 0.08);
+					span {
+						font-weight: 600;
+					}
+				}
+				svg {
+					height: 16px;
+					width: 16px;
+					margin-right: 12px;
+				}
+			}
+		}
 	}
 `;
 
-const SideNav = ({ children }) => {
+const SideNav = ({ state, setState }) => {
 	return (
 		<Wrapper>
-			<TopBar>
-				<p>
-					Signed in as
-					<span>Joshua</span>
-				</p>
-			</TopBar>
-
-			<BottomBar>
-				<h5>Active product package</h5>
-				<h3>Shares Recovery</h3>
-				<div className='status'>
-					<p>In Progress</p>
-					<p>Completed</p>
-				</div>
-				<ul>
-					<li>All Assets</li>
-					<li>Shares Recovery</li>
-					<li>Non Shares Recovery</li>
-				</ul>
-			</BottomBar>
+			<ul className={state}>
+				{sideMenus.map(({ path, menuName, iconName }) => (
+					<li key={generateID()}>
+						<NavLink to={path}>
+							<svg>
+								<use xlinkHref={`${icons}#${iconName}`} />
+							</svg>
+							<span>{menuName}</span>
+						</NavLink>
+					</li>
+				))}
+			</ul>
 		</Wrapper>
 	);
 };

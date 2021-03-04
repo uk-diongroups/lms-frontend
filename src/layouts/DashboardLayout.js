@@ -5,18 +5,22 @@ import styled from 'styled-components';
 
 const ParentContainer = styled.div`
 	position: relative;
-	background-color: #f5fefe;
+	background-color: #f9fafb;
 `;
 
 const ChildContainer = styled.div`
-	padding: 0px 100px;
-	min-height: calc(100vh - 140px);
+	height: calc(100vh - 84px);
 	display: flex;
 	box-sizing: border-box;
-	// border: 1px solid red;
 
 	@media (max-width: 1000px) {
 		width: 100%;
+	}
+	& > div:nth-child(2) {
+		background: white;
+		width: calc(100vw - 275px);
+		overflow-y: scroll;
+		min-height: calc(100vh - 84px);
 	}
 `;
 
@@ -31,7 +35,6 @@ const DashboardLayout = ({ children }) => {
 	return (
 		<ParentContainer>
 			<Header handleNavBar={handleNavBar} isOpen={isOpen} />
-
 			<ChildContainer>
 				<SideNav left={left} />
 				<div handleNavBar={handleNavBar}>{children}</div>

@@ -1,4 +1,0 @@
-//LOADERS
-export const LOADING = 'LOADING';
-export const CONTINUE_LOADING = 'CONTINUE_LOADING';
-export const END_LOADING = 'END_LOADING';

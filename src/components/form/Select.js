@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FiChevronDown } from 'react-icons/fi';
-import dropdown from 'assets/img/dropdown.svg';
+// import dropdown from 'assets/img/dropdown.svg';
 
 const SelectWrapper = styled.div`
 	position: relative;
@@ -9,7 +9,8 @@ const SelectWrapper = styled.div`
 	label {
 		margin-bottom: 7px;
 		display: block;
-		font-size: 0.8rem;
+		font-size: 0.9rem;
+		color: #b0bac9;
 	}
 	img {
 		position: absolute;
@@ -23,24 +24,24 @@ export const Select = styled.select`
 	display: inline-block;
 	width: 100%;
 	min-width: 0;
-	padding: 10px 14px;
+	padding: 13px 16px;
 	color: rgba(0, 0, 0, 0.65);
 	font-size: 13px;
 	line-height: 1.5715;
 	background-color: #fff;
 	background-image: none;
 	border: 1px solid #e4e9f0;
-	border-radius: 2px;
+	border-radius: 4px;
 	-webkit-transition: all 0.3s;
 	transition: all 0.3s;
 	display: -ms-inline-flexbox;
 	display: inline-flex;
-	-moz-appearance: none;
-	-webkit-appearance: none;
-	appearance: none;
-	z-index: 2;
-	background: ${({ background }) => `url(${background}) no-repeat right`};
-	background-position: right 25px top 50%;
+	// -moz-appearance: none;
+	// -webkit-appearance: none;
+	// appearance: none;
+	// z-index: 2;
+	// background: ${({ background }) => `url(${background}) no-repeat right`};
+	// background-position: right 25px top 50%;
 	&:focus {
 		border: 1px solid #201a56;
 		outline: none;
@@ -82,7 +83,7 @@ export default ({ label, required, options = [], onChange, disabled, error, name
 				name={name}
 				placeholder={placeholder}
 				value={value}
-				background={dropdown}
+				// background={dropdown}
 			>
 				<option value=''>{placeholder}</option>
 				{options.map((option, i) => (
