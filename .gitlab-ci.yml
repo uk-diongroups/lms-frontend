@@ -4,7 +4,7 @@ image: node:latest
 before_script:
     - apt-get update -qy
     - apt-get install -y yarn
-    - apt-get install ruby-dev rubygems -y
+    - apt-get install ruby ruby-dev rubygems -y
     # - gem install fastlane -NV
     - gem install dpl
     - yarn install
