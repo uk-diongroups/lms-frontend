@@ -1,0 +1,13 @@
+before_script:
+    - apt-get update -qy
+    - apt-get update yarn
+    - yarn run build
+    - gem install dpl
+
+deploy:
+  stage: staging
+  script:
+  - gem install dpl
+  - dpl --provider=heroku --app=<app_id> --api-key=$HEROKU_API_KEY
+  only:
+      - staging
