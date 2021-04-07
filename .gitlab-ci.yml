@@ -1,5 +1,5 @@
 image: node:latest
-image: java:8-jdk
+# image: java:8-jdk
 
 before_script:
     # - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
