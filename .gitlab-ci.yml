@@ -1,4 +1,4 @@
-image: node:latest
+image: node:12.22.0-buster
 # image: java:8-jdk
 
 before_script:
