@@ -2,7 +2,7 @@ before_script:
     - apt-get update -qy
     - apt-get install -y yarn
     - gem install dpl
-    - yarn install
+    - yarn add
 
 stages:
     - staging
