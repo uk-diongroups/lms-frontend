@@ -2,10 +2,6 @@
   "name": "uk_doin",
   "version": "0.1.0",
   "private": true,
-  "engines": {
-    "node": "10.24.0",
-    "npm": "6.7.0"
-},
   "dependencies": {
     "@craco/craco": "^6.1.1",
     "@testing-library/jest-dom": "^5.11.4",
