@@ -14,7 +14,6 @@ const PublicRoute = ({ component: Component, ...rest }) => {
 						<div className='app'>
 							<section className='main__parent--container'>
 								<Component {...props} />
-								{/* <Toast /> */}
 							</section>
 						</div>
 					</ErrorBoundary>

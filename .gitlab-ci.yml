@@ -9,7 +9,7 @@ before_script:
     - apt-get install ruby-dev rubygems -y
     - gem install dpl
     - yarn install
-
+    
 stages:
     - staging
     - production
