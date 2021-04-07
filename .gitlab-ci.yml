@@ -5,7 +5,7 @@ before_script:
     - gem install dpl
 
 deploy:
-  stage: staging
+  stage: deploy
   script:
   - gem install dpl
   - dpl --provider=heroku --app=<app_id> --api-key=$HEROKU_API_KEY
