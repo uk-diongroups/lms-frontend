@@ -5,13 +5,10 @@ before_script:
     # - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
     # - echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
     # - apt-get install apt-transport-https
-    - curl -sSL https://get.rvm.io | bash -s stable
-    - rvm install 2.7
-    - rvm use 2.7
-    - gem install fastlane -NV
     - apt-get update -qy
     - apt-get install -y yarn
     - apt-get install ruby-dev rubygems -y
+    - gem install fastlane -NV
     - gem install dpl
     - yarn install
 
