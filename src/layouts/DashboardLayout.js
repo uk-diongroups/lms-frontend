@@ -27,17 +27,13 @@ const ChildContainer = styled.div`
 const DashboardLayout = ({ children }) => {
 	const [isOpen, setIsOpen] = React.useState(false);
 	const [left, setLeft] = React.useState(-230);
-	const handleNavBar = () => {
-		setLeft(isOpen ? -230 : 0);
-		setIsOpen(!isOpen);
-	};
 
 	return (
 		<ParentContainer>
-			<Header handleNavBar={handleNavBar} isOpen={isOpen} />
+			<Header isOpen={isOpen} />
 			<ChildContainer>
 				<SideNav left={left} />
-				<div handleNavBar={handleNavBar}>{children}</div>
+				<div>{children}</div>
 			</ChildContainer>
 		</ParentContainer>
 	);
