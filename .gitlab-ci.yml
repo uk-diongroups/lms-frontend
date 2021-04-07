@@ -4,16 +4,15 @@ before_script:
     - yarn run build
     - gem install dpl
 
-
 stages:
     - staging
     - production
 
 staging:
-  type: deploy
-  stage: staging
-  script:
-  - gem install dpl
-  - dpl --provider=heroku --app=<app_id> --api-key=$HEROKU_API_KEY
-  only:
-      - staging
+    type: deploy
+    stage: staging
+    script:
+        - gem install dpl
+        - dpl --provider=heroku --app=$HEROKU_APP_ID --api-key=$HEROKU_API_KEY
+    only:
+        - staging
