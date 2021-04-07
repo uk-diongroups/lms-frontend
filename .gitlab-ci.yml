@@ -1,6 +1,5 @@
 before_script:
     - apt-get update -qy
-    - apt-get update yarn
     - yarn run build
     - gem install dpl
 
