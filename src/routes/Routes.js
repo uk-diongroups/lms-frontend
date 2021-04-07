@@ -29,9 +29,7 @@ const Routes = () => (
 				{/* Patient Routes */}
 				<AuthRoute exact path='/auth/login' component={Login} layout={AuthLayout} />
 				<AuthRoute exact path='/auth/register' component={Register} layout={RegisterLayout} />
-				{/* <AuthRoute exact path='/forgot-password' component={ForgotPassword} layout={AuthLayout} />
-				<AuthRoute exact path='/reset-password' component={ResetPassword} layout={AuthLayout} />
-				<AuthRoute exact path='/verify' component={VerifyEmail} layout={AuthLayout} /> */}
+	
 
 				<PrivateRoute exact path='/app/home' component={Home} layout={DashboardLayout} />
 				<PrivateRoute exact path='/app/dashboard' component={Dashboard} layout={DashboardLayout} />
