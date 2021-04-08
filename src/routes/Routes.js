@@ -19,6 +19,7 @@ const Register = lazy(() => import('../pages/auth/signup/SignUp'));
 const Home = lazy(() => import('../pages/app/home/Home'));
 const Dashboard = lazy(() => import('../pages/app/dashboard/Dashboard'));
 const Courses = lazy(() => import('../pages/app/courses/Courses'));
+const CourseDetails = lazy(() => import('../pages/app/courses/CourseDetails'))
 
 const Routes = () => (
 	<Router basename={process.env.PUBLIC_URL} history={history}>
@@ -29,11 +30,14 @@ const Routes = () => (
 				{/* Patient Routes */}
 				<AuthRoute exact path='/auth/login' component={Login} layout={AuthLayout} />
 				<AuthRoute exact path='/auth/register' component={Register} layout={RegisterLayout} />
-	
+				{/* <AuthRoute exact path='/forgot-password' component={ForgotPassword} layout={AuthLayout} />
+				<AuthRoute exact path='/reset-password' component={ResetPassword} layout={AuthLayout} />
+				<AuthRoute exact path='/verify' component={VerifyEmail} layout={AuthLayout} /> */}
 
 				<PrivateRoute exact path='/app/home' component={Home} layout={DashboardLayout} />
 				<PrivateRoute exact path='/app/dashboard' component={Dashboard} layout={DashboardLayout} />
 				<PrivateRoute exact path='/app/courses' component={Courses} layout={DashboardLayout} />
+				<PrivateRoute exact path='/app/courses/details' component={CourseDetails} layout={DashboardLayout} />
 
 				<Route component={Error404} />
 			</Switch>

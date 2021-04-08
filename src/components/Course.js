@@ -1,5 +1,6 @@
 import { Button, GridEqual } from 'components/Styles';
 import React from 'react';
+import { Link } from 'react-router-dom'
 import styled from 'styled-components';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
@@ -122,7 +123,13 @@ export default ({ course }) => {
 				/>
 			</Percentage>
 
+<<<<<<< HEAD
 			<Button>{course?.button}</Button>
+=======
+			<Link to={"/app/courses/details"}>
+				<Button>{course?.button}</Button>
+			</Link>
+>>>>>>> origin/courseDetails
 		</Wrapper>
 	);
 };

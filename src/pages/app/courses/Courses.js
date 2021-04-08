@@ -58,7 +58,7 @@ export default () => {
 		<Wrapper>
 			{/* Top section */}
 			<DashboardNav className='mb-70'>
-				<li className='active'>All courses</li>
+				<li className='active'>In progress</li>
 				<li>Completed</li>
 			</DashboardNav>
 			<section>
