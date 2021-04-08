@@ -1,11 +1,9 @@
 image: node:14.16.0-buster
-# image: java:8-jdk
 
 before_script:
     - apt-get update -qy
     - apt-get install -y yarn
     - apt-get install ruby ruby-dev rubygems -y
-    # - gem install fastlane -NV
     - gem install dpl
     - yarn install
 
