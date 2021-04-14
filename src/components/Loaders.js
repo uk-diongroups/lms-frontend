@@ -1,7 +1,7 @@
 import React from 'react';
 import Loader from 'react-loader-spinner';
 import styled from 'styled-components';
-import { isLoading } from 'util/loading';
+import { isLoading } from 'utils/loading';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 

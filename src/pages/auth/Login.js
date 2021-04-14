@@ -5,6 +5,10 @@ import { ButtonFullWidth } from 'components/Styles';
 import { Link } from 'react-router-dom';
 import message from 'assets/img/message.svg';
 import padlock from 'assets/img/padlock.svg';
+import { login } from 'redux/actions/auth.action';
+import { useDispatch } from 'react-redux';
+import { useFormik } from 'formik';
+import { loginSchema } from 'utils/validation';
 
 const Wrapper = styled.div`
 	padding: 0px 170px;
@@ -49,25 +53,37 @@ const Text = styled.p`
 	}
 `;
 
-export default ({ history, match, success }) => {
+export default ({ history, match }) => {
+	const dispatch = useDispatch();
+	const { handleSubmit, handleChange, values, errors, touched, handleBlur } = useFormik({
+		initialValues: {
+			email: '',
+			password: '',
+		},
+		validationSchema: loginSchema,
+		onSubmit(values) {
+			dispatch(login(values));
+		},
+	});
+
+	console.log(values, errors);
 	return (
 		<Wrapper>
 			<div>
 				<h3>Sign In</h3>
 				<p className='top'>Please enter your credentials to proceed.</p>
-				<form>
-					<Input icon={message} name='email' placeholder='email' label='EMAIL ADDRESS' />
+				<form onSubmit={handleSubmit}>
+					<Input
+						icon={message}
+						name='email'
+						placeholder='email'
+						label='EMAIL ADDRESS'
+						onChange={handleChange}
+					/>
 
-					<Input icon={padlock} name='password' type='password' label='PASSWORD' />
+					<Input icon={padlock} name='password' type='password' label='PASSWORD' onChange={handleChange} />
 
-					<ButtonFullWidth
-						type='button'
-						onClick={() => {
-							history.push('/app/home');
-						}}
-					>
-						Login
-					</ButtonFullWidth>
+					<ButtonFullWidth type='submit'>Login</ButtonFullWidth>
 				</form>
 
 				{match?.path === '/auth/register' ? (

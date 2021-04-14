@@ -123,13 +123,9 @@ export default ({ course }) => {
 				/>
 			</Percentage>
 
-<<<<<<< HEAD
-			<Button>{course?.button}</Button>
-=======
 			<Link to={"/app/courses/details"}>
 				<Button>{course?.button}</Button>
 			</Link>
->>>>>>> origin/courseDetails
 		</Wrapper>
 	);
 };

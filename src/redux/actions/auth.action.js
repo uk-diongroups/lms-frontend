@@ -5,7 +5,6 @@ import axios from 'axios';
 import { loading, endLoading } from 'redux/loader.dispatcher';
 import { errorHandler } from 'utils/errors';
 import request from 'config/baseUrl';
-import { getWorkspaces } from './workspace.action';
 
 export const register = (userData) => async (dispatch) => {
 	loading('register');
@@ -36,16 +35,14 @@ export const setCurrentUser = (user) => (dispatch) => {
 export const login = (userData) => async (dispatch) => {
 	loading('login');
 	try {
-		const {
-			data: {
-				data: { token, merchant },
-			},
-		} = await axios.post(`${URL}/auth/login`, userData);
+		const { data } = await axios.post(`${URL}/auth/login`, userData);
 
-		localStorage.setItem('merchant_token', token);
-		localStorage.setItem('merchant', JSON.stringify(merchant));
-		await dispatch(getWorkspaces(true));
-		dispatch(setCurrentUser(merchant));
+		console.log(data);
+
+		// localStorage.setItem('merchant_token', token);
+		// localStorage.setItem('merchant', JSON.stringify(merchant));
+		// await dispatch(getWorkspaces(true));
+		// dispatch(setCurrentUser(merchant));
 	} catch (err) {
 		errorHandler(err);
 	}
