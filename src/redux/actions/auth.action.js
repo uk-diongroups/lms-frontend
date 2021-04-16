@@ -35,37 +35,21 @@ export const setCurrentUser = (user) => (dispatch) => {
 export const login = (userData) => async (dispatch) => {
 	loading('login');
 	try {
-		const { data } = await axios.post(`${URL}/auth/login`, userData);
+		const {
+			data: {
+				data: { access_token: token, employee },
+			},
+		} = await axios.post(`${URL}/auth/login`, userData);
 
-		console.log(data);
-
-		// localStorage.setItem('merchant_token', token);
-		// localStorage.setItem('merchant', JSON.stringify(merchant));
-		// await dispatch(getWorkspaces(true));
-		// dispatch(setCurrentUser(merchant));
+		localStorage.setItem('_token', token);
+		localStorage.setItem('ukdion_employee', JSON.stringify(employee));
+		dispatch(setCurrentUser(employee));
+		endLoading('login');
+		return Promise.resolve();
 	} catch (err) {
 		errorHandler(err);
 	}
 	endLoading('login');
-};
-
-export const verify = (value) => async (dispatch) => {
-	loading('verify');
-	try {
-		await axios.post(`${URL}/auth/verify`, {
-			email: value.email,
-			code: value.code,
-		});
-
-		dispatch({
-			type: message.GET_SUCCESS,
-			payload: 'Account was verified successfully',
-		});
-	} catch (err) {
-		errorHandler(err);
-	}
-
-	endLoading('verify');
 };
 
 export const forgetPassword = (value) => async (dispatch) => {
@@ -105,8 +89,7 @@ export const resetPassword = (value) => async (dispatch) => {
 
 export const logoutUser = () => (dispatch) => {
 	// remove token from local storage
-	localStorage.removeItem('merchant_token');
-	localStorage.removeItem('merchant');
-	localStorage.removeItem('current_workspace');
+	localStorage.removeItem('_token');
+	localStorage.removeItem('ukdion_employee');
 	dispatch(setCurrentUser({}));
 };
