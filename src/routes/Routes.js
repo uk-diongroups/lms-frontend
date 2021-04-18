@@ -20,6 +20,10 @@ const Home = lazy(() => import('../pages/app/home/Home'));
 const Dashboard = lazy(() => import('../pages/app/dashboard/Dashboard'));
 const Courses = lazy(() => import('../pages/app/courses/Courses'));
 const CourseDetails = lazy(() => import('../pages/app/courses/CourseDetails'));
+const Assessment = lazy(() => import('../pages/app/assessment/Assessment'));
+const Result = lazy(() => import('../pages/app/assessment/Result'));
+const Questions = lazy(() => import('../pages/app/assessment/Questions'));
+
 const CourseEnrolled = lazy(() => import('../pages/app/courses/CourseEnrolled'));
 
 const Routes = () => (
@@ -36,22 +40,19 @@ const Routes = () => (
 				<AuthRoute exact path='/reset-password' component={ResetPassword} layout={AuthLayout} />
 				<AuthRoute exact path='/verify' component={VerifyEmail} layout={AuthLayout} /> */}
 
-					<PrivateRoute exact path='/app/home' component={Home} layout={DashboardLayout} />
-					<PrivateRoute exact path='/app/dashboard' component={Dashboard} layout={DashboardLayout} />
-					<PrivateRoute exact path='/app/courses' component={Courses} layout={DashboardLayout} />
-					<PrivateRoute
-						exact
-						path='/app/courses/details/:id'
-						component={CourseDetails}
-						layout={DashboardLayout}
-					/>
-					{/* <PrivateRoute exact path='/app/courses/details' component={CourseDetails} layout={DashboardLayout} /> */}
-					<Route component={Error404} />
-				</Switch>
-			</Suspense>
-		</Router>
-		<Toast />
-	</>
+				<PrivateRoute exact path='/app/home' component={Home} layout={DashboardLayout} />
+				<PrivateRoute exact path='/app/dashboard' component={Dashboard} layout={DashboardLayout} />
+				<PrivateRoute exact path='/app/courses' component={Courses} layout={DashboardLayout} />
+				{/* <PrivateRoute exact path='/app/courses/details' component={CourseEnrolled} layout={DashboardLayout} /> */}
+				<PrivateRoute exact path='/app/courses/details' component={CourseDetails} layout={DashboardLayout} />
+				<PrivateRoute exact path='/app/assessment' component={Assessment} layout={DashboardLayout} />
+				<PrivateRoute exact path='/app/result' component={Result} layout={DashboardLayout} />
+				<PrivateRoute exact path='/app/questions' component={Questions} layout={DashboardLayout} />
+
+				<Route component={Error404} />
+			</Switch>
+		</Suspense>
+	</Router>
 );
 
 export default Routes;
