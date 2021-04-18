@@ -22,6 +22,7 @@ const Courses = lazy(() => import('../pages/app/courses/Courses'));
 const CourseDetails = lazy(() => import('../pages/app/courses/CourseDetails'));
 const Assessment = lazy(() => import('../pages/app/assessment/Assessment'));
 const Result = lazy(() => import('../pages/app/assessment/Result'));
+const Questions = lazy(() => import('../pages/app/assessment/Questions'));
 
 const CourseEnrolled = lazy(() => import('../pages/app/courses/CourseEnrolled'));
 
@@ -45,6 +46,7 @@ const Routes = () => (
 				<PrivateRoute exact path='/app/courses/details' component={CourseDetails} layout={DashboardLayout} />
 				<PrivateRoute exact path='/app/assessment' component={Assessment} layout={DashboardLayout} />
 				<PrivateRoute exact path='/app/result' component={Result} layout={DashboardLayout} />
+				<PrivateRoute exact path='/app/questions' component={Questions} layout={DashboardLayout} />
 
 				<Route component={Error404} />
 			</Switch>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Doodle from '../../../assets/img/doodle.svg';
 import Sally from '../../../assets/img/Saly-16.svg';
@@ -46,6 +47,9 @@ export const Monthly = styled.div`
         border:0;
         color: white;
         cursor: pointer;
+        a{
+            color: white;
+        }
     }
 `
 
@@ -62,7 +66,9 @@ const Assessment = () => {
                     </p>
                     <div style={{display: 'flex',justifyContent: 'space-between',marginTop:'7%'}}>
                         {/* <button className="btn btn-default">GO BACK</button> */}
-                        <button className="btn btn-success">PROCEED TO ASSESSMENT</button>
+                        <button className="btn btn-success">
+                            <Link to="/app/questions">PROCEED TO ASSESSMENT</Link>
+                        </button>
                     </div>
                 </div>
 
