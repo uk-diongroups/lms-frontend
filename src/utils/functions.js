@@ -24,6 +24,10 @@ export const stripText = (str, length = 120) => {
 	return str?.length > length ? `${str.substring(0, length)}........` : str;
 };
 
+export const clearMessage = () => (dispatch) => {
+	store.dispatch({ type: 'CLEAR_MESSAGES' });
+};
+
 export const getQueryParam = () => {
 	// console.log(history);
 };

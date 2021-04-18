@@ -6,9 +6,11 @@ import { Link } from 'react-router-dom';
 import message from 'assets/img/message.svg';
 import padlock from 'assets/img/padlock.svg';
 import { login } from 'redux/actions/auth.action';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import { loginSchema } from 'utils/validation';
+import { getLoadingState } from 'utils/functions';
+import { ButtonLoader } from 'components/Loaders';
 
 const Wrapper = styled.div`
 	padding: 0px 170px;
@@ -62,11 +64,14 @@ export default ({ history, match }) => {
 		},
 		validationSchema: loginSchema,
 		onSubmit(values) {
-			dispatch(login(values));
+			dispatch(login(values)).then(() => {
+				history.push('/app/home');
+			});
 		},
 	});
 
-	console.log(values, errors);
+	const loading = useSelector(getLoadingState('login'));
+
 	return (
 		<Wrapper>
 			<div>
@@ -79,22 +84,22 @@ export default ({ history, match }) => {
 						placeholder='email'
 						label='EMAIL ADDRESS'
 						onChange={handleChange}
+						error={errors?.email}
 					/>
 
-					<Input icon={padlock} name='password' type='password' label='PASSWORD' onChange={handleChange} />
+					<Input
+						icon={padlock}
+						name='password'
+						type='password'
+						label='PASSWORD'
+						onChange={handleChange}
+						error={errors?.password}
+					/>
 
-					<ButtonFullWidth type='submit'>Login</ButtonFullWidth>
+					<ButtonFullWidth type='submit' disabled={loading}>
+						{loading ? <ButtonLoader /> : 'Login'}
+					</ButtonFullWidth>
 				</form>
-
-				{match?.path === '/auth/register' ? (
-					<Text className='mt-50'>
-						Already have an account? <Link to='/auth/login'>Login</Link>
-					</Text>
-				) : (
-					<Text>
-						Don't have an account? <Link to='/auth/register'>Sign up</Link>
-					</Text>
-				)}
 			</div>
 		</Wrapper>
 	);

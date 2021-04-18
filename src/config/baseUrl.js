@@ -11,7 +11,7 @@ const request = axios.create({
 request.defaults.timeout = 5000;
 
 request.interceptors.request.use(function (config) {
-	const token = localStorage.getItem('freemind_token');
+	const token = localStorage.getItem('_token');
 	config.headers.Authorization = token ? `Bearer ${token}` : '';
 	return config;
 });

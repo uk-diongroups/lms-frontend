@@ -5,22 +5,24 @@ import { connect } from 'react-redux';
 import ErrorBoundary from 'components/ErrorBoundary';
 // import Toast from 'components/Toast';
 
-export default ({ component: Component, layout: Layout, location, isAuthenticated, path, ...rest }) => {
+const AuthRoute = ({ component: Component, layout: Layout, location, isAuthenticated, path, ...rest }) => {
 	return (
 		<Route
 			path={path}
 			{...rest}
 			render={(props) => {
-				// if user is authenticated, redirect to homepage
-
-				return (
-					<ErrorBoundary>
-						<Layout location={location} isSignUp>
-							<Component {...props} />
-						</Layout>
-						{/* <Toast /> */}
-					</ErrorBoundary>
-				);
+				if (!isAuthenticated) {
+					return (
+						<ErrorBoundary>
+							<Layout>
+								<Component {...props} />
+							</Layout>
+							{/* <Toast /> */}
+						</ErrorBoundary>
+					);
+				} else {
+					return <Redirect to='/app/home' />;
+				}
 			}}
 		/>
 	);
@@ -33,8 +35,8 @@ export default ({ component: Component, layout: Layout, location, isAuthenticate
 // 	}),
 // };
 
-// const mapStateToProps = ({ auth }) => ({
-// 	isAuthenticated: auth.isAuthenticated,
-// });
+const mapStateToProps = ({ auth }) => ({
+	isAuthenticated: auth.isAuthenticated,
+});
 
-// export default connect(mapStateToProps)(AuthRoute);
+export default connect(mapStateToProps)(AuthRoute);

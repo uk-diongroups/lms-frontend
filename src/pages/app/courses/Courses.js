@@ -1,11 +1,15 @@
-import React from 'react';
-import Course from '../../../components/Course';
-import figma from 'assets/img/figma.svg';
 import analog from 'assets/img/analog.svg';
-import instagram from 'assets/img/instagram.svg';
 import drawing from 'assets/img/drawing.svg';
-import { DashboardNav, Grid } from 'components/Styles';
+import figma from 'assets/img/figma.svg';
+import instagram from 'assets/img/instagram.svg';
+import { DashboardNav } from 'components/Styles';
+import React from 'react';
+import { useDispatch, useSelector, connect } from 'react-redux';
+import { getCourses } from 'redux/actions/courses.action';
 import styled from 'styled-components';
+import { getLoadingState } from 'utils/functions';
+import Course from 'components/Course';
+import { BlockLoader } from 'components/Loaders';
 
 const Wrapper = styled.div`
 	padding: 56px;
@@ -16,44 +20,53 @@ const Wrapper = styled.div`
 	}
 `;
 
-export default () => {
-	const courses = [
-		{
-			img: figma,
-			title: 'Learn Figma',
-			author: 'Christopher Morgan',
-			time: '6h 30min',
-			percentage: 0,
-			button: 'Start Course',
-		},
+const Courses = ({ courses }) => {
+	const dispatch = useDispatch();
 
-		{
-			img: analog,
-			title: 'Analog photography',
-			author: 'Gordon Norman',
-			time: '3h 15min',
-			percentage: 67,
-			button: 'Resume',
-		},
+	React.useEffect(() => {
+		dispatch(getCourses());
+	}, []);
 
-		{
-			img: instagram,
-			title: 'Master Instagram',
-			author: 'Sophie Gill',
-			time: '6h 30min',
-			percentage: 99,
-			button: 'Resume',
-		},
+	console.log(courses);
+	const loadingCourses = useSelector(getLoadingState('getCourses'));
 
-		{
-			img: drawing,
-			title: 'Basics of drawing',
-			author: 'Jean Tate',
-			time: '11h 30min',
-			percentage: 99,
-			button: 'Resume',
-		},
-	];
+	// const courses = [
+	// 	{
+	// 		img: figma,
+	// 		title: 'Learn Figma',
+	// 		author: 'Christopher Morgan',
+	// 		time: '6h 30min',
+	// 		percentage: 0,
+	// 		button: 'Start Course',
+	// 	},
+
+	// 	{
+	// 		img: analog,
+	// 		title: 'Analog photography',
+	// 		author: 'Gordon Norman',
+	// 		time: '3h 15min',
+	// 		percentage: 67,
+	// 		button: 'Resume',
+	// 	},
+
+	// 	{
+	// 		img: instagram,
+	// 		title: 'Master Instagram',
+	// 		author: 'Sophie Gill',
+	// 		time: '6h 30min',
+	// 		percentage: 99,
+	// 		button: 'Resume',
+	// 	},
+
+	// 	{
+	// 		img: drawing,
+	// 		title: 'Basics of drawing',
+	// 		author: 'Jean Tate',
+	// 		time: '11h 30min',
+	// 		percentage: 99,
+	// 		button: 'Resume',
+	// 	},
+	// ];
 	return (
 		<Wrapper>
 			{/* Top section */}
@@ -61,11 +74,22 @@ export default () => {
 				<li className='active'>In progress</li>
 				<li>Completed</li>
 			</DashboardNav>
-			<section>
-				{courses.map((course) => (
-					<Course course={course} />
-				))}
-			</section>
+			{loadingCourses ? (
+				<BlockLoader />
+			) : (
+				<section>
+					{courses.map((course) => (
+						<Course course={course} />
+					))}
+				</section>
+			)}
 		</Wrapper>
 	);
 };
+
+export default connect(
+	({ courses: { courses } }) => ({
+		courses,
+	}),
+	null,
+)(Courses);

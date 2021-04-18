@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import resource from 'assets/img/resource1.png';
+import { withRouter } from 'react-router';
 
 const Wrapper = styled.div`
 	margin-right: 27px;
@@ -27,15 +29,19 @@ const Wrapper = styled.div`
 	}
 `;
 
-export default ({ resource }) => {
+export default withRouter(({ history, course }) => {
 	return (
-		<Wrapper>
-			<img src={resource.img} />
+		<Wrapper
+			onClick={() => {
+				history.push(`/app/courses/details/${course?.id}`);
+			}}
+		>
+			<img src={course?.background_image} />
 
 			<div>
-				<h4>{resource.title}</h4>
-				<p>{resource.author}</p>
+				<h4>{course.title}</h4>
+				<p>{course.author}</p>
 			</div>
 		</Wrapper>
 	);
-};
+});

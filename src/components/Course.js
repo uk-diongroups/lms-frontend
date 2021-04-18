@@ -1,6 +1,6 @@
 import { Button, GridEqual } from 'components/Styles';
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
@@ -78,7 +78,7 @@ export default ({ course }) => {
 	return (
 		<Wrapper>
 			<Image>
-				<img src={course?.img} />
+				<img src={course?.background_image} />
 			</Image>
 			<Title>
 				<h3>{course?.title}</h3>
@@ -90,7 +90,7 @@ export default ({ course }) => {
 					<svg>
 						<use xlinkHref={`${icons}#time`} />
 					</svg>
-					<p>{course?.time}</p>
+					<p>{course?.time || 0}</p>
 				</Hour>
 			)}
 
@@ -118,13 +118,13 @@ export default ({ course }) => {
 						trailColor: 'transparent',
 						backgroundColor: '#F64C71',
 					})}
-					value={course?.percentage}
-					text={`${course?.percentage}%`}
+					value={course?.percentage || 0}
+					text={`${course?.percentage || 0}%`}
 				/>
 			</Percentage>
 
-			<Link to={"/app/courses/details"}>
-				<Button>{course?.button}</Button>
+			<Link to={`/app/courses/details/${course?.id}`}>
+				<Button>Start course</Button>
 			</Link>
 		</Wrapper>
 	);

@@ -1,20 +1,23 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Grid, GridEqual, H2, Button } from 'components/Styles';
-import InputField from 'components/form/Input';
 import homebg from 'assets/img/homebg.svg';
-import Slider from 'react-slick';
-import recom from 'assets/img/recom.png';
+import homefooter from 'assets/img/homefooter.png';
 import resource1 from 'assets/img/resource1.png';
 import resource2 from 'assets/img/resource2.png';
 import resource3 from 'assets/img/resource3.png';
 import resource4 from 'assets/img/resource4.png';
-import Resource from './Resource';
 import resource5 from 'assets/img/resource5.png';
 import resource6 from 'assets/img/resource6.png';
 import resource7 from 'assets/img/resource7.png';
 import resource8 from 'assets/img/resource8.png';
-import homefooter from 'assets/img/homefooter.png';
+import InputField from 'components/form/Input';
+import { BlockLoader } from 'components/Loaders';
+import { Button, Grid, H2 } from 'components/Styles';
+import React from 'react';
+import { connect, useDispatch, useSelector } from 'react-redux';
+import Slider from 'react-slick';
+import { getCourses } from 'redux/actions/courses.action';
+import styled from 'styled-components';
+import { getLoadingState } from 'utils/functions';
+import Resource from './Resource';
 
 const Wrapper = styled.div`
 	padding-left: 58px;
@@ -98,13 +101,21 @@ const Search = styled.div`
 `;
 
 // eslint-disable-next-line
-export default () => {
+const Home = ({ courses }) => {
+	const dispatch = useDispatch();
+
+	React.useEffect(() => {
+		dispatch(getCourses());
+	}, []);
+
+	const loadingCourses = useSelector(getLoadingState('getCourses'));
+
 	const settings = {
 		dots: false,
 		infinite: true,
 		speed: 500,
-		slidesToShow: 4,
-		slidesToScroll: 4,
+		slidesToShow: 3,
+		// slidesToScroll: 2,
 	};
 
 	const resources = [
@@ -180,25 +191,29 @@ export default () => {
 				<img src={homebg} alt='homebg' />
 			</Grid>
 
-			<SliderWrapper>
-				<H2>Human Resourses</H2>
-				<Slider {...settings}>
-					{resources.map((resource, i) => (
-						<Resource resource={resource} />
-					))}
-				</Slider>
-			</SliderWrapper>
+			{loadingCourses ? (
+				<BlockLoader />
+			) : (
+				<SliderWrapper>
+					<H2>Human Resourses</H2>
+					<Slider {...settings}>
+						{courses.map((course, i) => (
+							<Resource course={course} />
+						))}
+					</Slider>
+				</SliderWrapper>
+			)}
 
-			<SliderWrapper>
+			{/* <SliderWrapper>
 				<H2>Human Resourses</H2>
 				<Slider {...settings}>
 					{otherResources.map((resource, i) => (
 						<Resource key={i} resource={resource} />
 					))}
 				</Slider>
-			</SliderWrapper>
+			</SliderWrapper> */}
 
-			<section className='mb-30'>
+			{/* <section className='mb-30'>
 				<H2>Recommended</H2>
 				<GridEqual count={3} gap={'23px'}>
 					<Recommended>
@@ -226,7 +241,7 @@ export default () => {
 						</div>
 					</Recommended>
 				</GridEqual>
-			</section>
+			</section> */}
 
 			<Footer>
 				<img src={homefooter} alt='homefooter' />
@@ -234,3 +249,10 @@ export default () => {
 		</Wrapper>
 	);
 };
+
+export default connect(
+	({ courses: { courses } }) => ({
+		courses,
+	}),
+	null,
+)(Home);
