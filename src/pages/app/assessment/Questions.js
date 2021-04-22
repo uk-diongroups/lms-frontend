@@ -213,7 +213,6 @@ const Questions = ({ history, match: { params }, assessmentQuestions }) => {
 					<TimeRemain>
 						<div style={{ width: '90%', margin: 'auto' }}>
 							<h4>Time Remaining</h4>
-							{/* <h2>25:45</h2> */}
 							<h2>
 								<Countdown date={Date.now() + convertDurationToMins(duration) * 60000} />
 							</h2>
@@ -263,7 +262,6 @@ const Questions = ({ history, match: { params }, assessmentQuestions }) => {
 									key={option?.value}
 									onClick={(e) => {
 										const { value } = e.target;
-
 										questions[activeQuestion].answer = value;
 										setQuestions([...questions]);
 									}}
