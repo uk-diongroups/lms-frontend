@@ -1,0 +1,21 @@
+.assessment {
+	&-container {
+		display: flex;
+		background: #f8fafb;
+		border-radius: 14px;
+		margin-bottom: 24px;
+		align-items: center;
+		padding: 15px;
+		justify-content: space-between;
+
+		&__img {
+			width: 64px;
+			height: 64px;
+			background: #f2f4f8;
+			border-radius: 12px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+	}
+}

@@ -27,16 +27,15 @@ const Questions = lazy(() => import('../pages/app/assessment/Questions'));
 const CourseEnrolled = lazy(() => import('../pages/app/courses/CourseEnrolled'));
 
 const Routes = () => (
-	<>
-		<Router basename={process.env.PUBLIC_URL} history={history}>
-			<Suspense fallback={<PageLoader />}>
-				<Switch>
-					<AuthRoute exact path='/' component={Login} layout={AuthLayout} />
+	<Router basename={process.env.PUBLIC_URL} history={history}>
+		<Suspense fallback={<PageLoader />}>
+			<Switch>
+				<AuthRoute exact path='/' component={Login} layout={AuthLayout} />
 
-					{/* Patient Routes */}
-					<AuthRoute exact path='/auth/login' component={Login} layout={AuthLayout} />
-					<AuthRoute exact path='/auth/register' component={Register} layout={RegisterLayout} />
-					{/* <AuthRoute exact path='/forgot-password' component={ForgotPassword} layout={AuthLayout} />
+				{/* Patient Routes */}
+				<AuthRoute exact path='/auth/login' component={Login} layout={AuthLayout} />
+				<AuthRoute exact path='/auth/register' component={Register} layout={RegisterLayout} />
+				{/* <AuthRoute exact path='/forgot-password' component={ForgotPassword} layout={AuthLayout} />
 				<AuthRoute exact path='/reset-password' component={ResetPassword} layout={AuthLayout} />
 				<AuthRoute exact path='/verify' component={VerifyEmail} layout={AuthLayout} /> */}
 
@@ -45,9 +44,19 @@ const Routes = () => (
 				<PrivateRoute exact path='/app/courses' component={Courses} layout={DashboardLayout} />
 				{/* <PrivateRoute exact path='/app/courses/details' component={CourseEnrolled} layout={DashboardLayout} /> */}
 				<PrivateRoute exact path='/app/courses/details' component={CourseDetails} layout={DashboardLayout} />
-				<PrivateRoute exact path='/app/assessment' component={Assessment} layout={DashboardLayout} />
-				<PrivateRoute exact path='/app/result' component={Result} layout={DashboardLayout} />
-				<PrivateRoute exact path='/app/questions' component={Questions} layout={DashboardLayout} />
+				<PrivateRoute exact path='/app/assessments' component={Assessment} layout={DashboardLayout} />
+				<PrivateRoute
+					exact
+					path='/app/assessment/result/:assessmentId'
+					component={Result}
+					layout={DashboardLayout}
+				/>
+				<PrivateRoute
+					exact
+					path='/app/assessment/questions/:assessmentId'
+					component={Questions}
+					layout={DashboardLayout}
+				/>
 
 				<Route component={Error404} />
 			</Switch>
