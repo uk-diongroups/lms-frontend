@@ -1,4 +1,4 @@
-import { BlockLoader } from 'components/Loaders';
+import { BlockLoader, ButtonLoader } from 'components/Loaders';
 import useAssessment from 'hooks/assessment';
 import React from 'react';
 import { useDispatch, useSelector, connect } from 'react-redux';
@@ -172,6 +172,7 @@ const Questions = ({ history, match: { params }, assessmentQuestions }) => {
 	const { formatOptions, calculatePercentageCompleted, convertDurationToMins } = useAssessment();
 
 	const loadingQuestions = useSelector(getLoadingState('getQuestionsByAssessmentId'));
+	const loadingSubmit = useSelector(getLoadingState('submitQuestions'));
 
 	const [questions, setQuestions] = React.useState([]);
 	const [activeQuestion, setActiveQuestion] = React.useState(0);
@@ -190,8 +191,6 @@ const Questions = ({ history, match: { params }, assessmentQuestions }) => {
 			setDuration({ ...durations });
 		}
 	}, [assessmentQuestions]);
-
-	console.log(duration);
 
 	React.useEffect(() => {
 		let percentage = calculatePercentageCompleted(activeQuestion, questions.length);
@@ -279,7 +278,7 @@ const Questions = ({ history, match: { params }, assessmentQuestions }) => {
 
 						<Btn>
 							<button
-								disabled={!Boolean(questions[activeQuestion]?.answer)}
+								disabled={!Boolean(questions[activeQuestion]?.answer) || loadingSubmit}
 								onClick={() => {
 									if (activeQuestion === questions.length - 1) {
 										dispatch(submitQuestions(assessmentId, questions)).then(() => {
@@ -290,7 +289,13 @@ const Questions = ({ history, match: { params }, assessmentQuestions }) => {
 									}
 								}}
 							>
-								{activeQuestion === questions.length - 1 ? 'Submit' : 'Continue'}
+								{loadingSubmit ? (
+									<ButtonLoader />
+								) : activeQuestion === questions.length - 1 ? (
+									'Submit'
+								) : (
+									'Continue'
+								)}
 							</button>
 						</Btn>
 					</div>

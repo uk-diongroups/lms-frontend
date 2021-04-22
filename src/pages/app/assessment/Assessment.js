@@ -121,8 +121,15 @@ const Assessment = ({ assessments, history }) => {
 						</div>
 					))
 				)}
+			</Wrapper>
+		</>
+	);
+};
 
-				{/* <Monthly>
+export default connect(({ assessments: { assessments } }) => ({ assessments }), null)(Assessment);
+
+{
+	/* <Monthly>
 					<div>
 						<h4>Monthly Employee Assesment</h4>
 						<p>
@@ -140,10 +147,5 @@ const Assessment = ({ assessments, history }) => {
 						<img src={Doodle} alt='' />
 						<img src={Sally} alt='' style={{ width: 'auto', height: 'auto' }} />
 					</div>
-				</Monthly> */}
-			</Wrapper>
-		</>
-	);
-};
-
-export default connect(({ assessments: { assessments } }) => ({ assessments }), null)(Assessment);
+				</Monthly> */
+}

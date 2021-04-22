@@ -23,7 +23,7 @@ const sideMenus = [
 	{
 		menuName: 'Assessments',
 		iconName: 'assessments',
-		path: '/app/assessment',
+		path: '/app/assessments',
 	},
 
 	{
