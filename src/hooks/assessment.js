@@ -16,8 +16,9 @@ const methods = {
 	convertDurationToMins(duration) {
 		let hr2mins = duration['hours'] * 60;
 		let sec2mins = duration['seconds'] / 60;
+		
 
-		return Math.ceil(hr2mins + sec2mins + duration['seconds']);
+		return Math.ceil(hr2mins + sec2mins + duration['minutes']);
 	},
 };
 
