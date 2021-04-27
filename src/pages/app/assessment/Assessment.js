@@ -120,6 +120,8 @@ const Assessment = ({ assessments, history }) => {
 
 				{loadingAssessment ? (
 					<BlockLoader />
+				) : currentAssessments.length === 0 ? (
+					<p>No assessments</p>
 				) : (
 					currentAssessments?.map((assessment) => (
 						<div className='assessment-container'>
