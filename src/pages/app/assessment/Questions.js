@@ -173,7 +173,7 @@ const Questions = ({ history, match: { params }, assessmentQuestions, assessment
 	const { formatOptions, calculatePercentageCompleted, convertDurationToMins } = useAssessment();
 
 	const loadingQuestions = useSelector(getLoadingState('getAssessments'));
-	const loadingAssessment = useSelector(getLoadingState('getQuestionsByAssessmentId'));
+	const loadingAssessment = useSelector(getLoadingState('getAssessments'));
 	const loadingSubmit = useSelector(getLoadingState('submitQuestions'));
 
 	const [questions, setQuestions] = React.useState([]);

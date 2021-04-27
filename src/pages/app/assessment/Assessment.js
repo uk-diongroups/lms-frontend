@@ -82,7 +82,7 @@ const Assessment = ({ assessments, history }) => {
 		}
 	}, [assessments, active]);
 
-	console.log(currentAssessments);
+	// console.log(currentAssessments);
 
 	return (
 		<>
