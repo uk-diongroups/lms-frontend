@@ -77,7 +77,7 @@ const Assessment = ({ assessments, history }) => {
 			}
 
 			if (active === 2) {
-				setCurrentAssessments([...assessments?.filter((assessment) => assessment?.status !== null)]);
+				setCurrentAssessments([...assessments?.filter((assessment) => assessment?.completed_at !== null)]);
 			}
 		}
 	}, [assessments, active]);
