@@ -10,11 +10,11 @@ export const getAssessments = () => async (dispatch) => {
 			data: { data },
 		} = await request.get(`/assesment`);
 
-		console.log(data);
+		let assessments = data.splice(data.length - 10, 10);
 
 		dispatch({
 			type: t.GET_ASSESSMENTS,
-			payload: { assessments: data },
+			payload: { assessments },
 		});
 	} catch (err) {
 		errorHandler(err);
