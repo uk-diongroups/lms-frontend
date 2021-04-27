@@ -62,13 +62,28 @@ const Assessment = ({ assessments, history }) => {
 	const dispatch = useDispatch();
 	const { convertDurationToMins } = useAssessment();
 	const [active, setActive] = React.useState(1);
+	const [current, setCurrent] = React.useState('active');
 	const loadingAssessment = useSelector(getLoadingState('getAssessments'));
+	const [currentAssessments, setCurrentAssessments] = React.useState([]);
 
 	React.useEffect(() => {
 		dispatch(getAssessments());
 	}, []);
 
-	console.log({ assessments });
+	React.useEffect(() => {
+		if (assessments?.length) {
+			if (active === 1) {
+				setCurrentAssessments([...assessments?.filter((assessment) => assessment?.completed_at === null)]);
+			}
+
+			if (active === 2) {
+				setCurrentAssessments([...assessments?.filter((assessment) => assessment?.completed_at !== null)]);
+			}
+		}
+	}, [assessments, active]);
+
+	console.log(currentAssessments);
+
 	return (
 		<>
 			<Wrapper>
@@ -77,7 +92,10 @@ const Assessment = ({ assessments, history }) => {
 						className={classnames('', {
 							active: active === 1,
 						})}
-						onClick={() => setActive(1)}
+						onClick={() => {
+							setCurrent('active');
+							setActive(1);
+						}}
 					>
 						Active
 					</li>
@@ -85,24 +103,27 @@ const Assessment = ({ assessments, history }) => {
 						className={classnames('', {
 							active: active === 2,
 						})}
-						onClick={() => setActive(2)}
+						onClick={() => {
+							setActive(2);
+							setCurrent('completed');
+						}}
 					>
 						Completed
 					</li>
-					<li
+					{/* <li
 						className={classnames('', {
 							active: active === 3,
 						})}
 						onClick={() => setActive(3)}
 					>
 						Missed
-					</li>
+					</li> */}
 				</DashboardNav>
 
 				{loadingAssessment ? (
 					<BlockLoader />
 				) : (
-					assessments?.map((assessment) => (
+					currentAssessments?.map((assessment) => (
 						<div className='assessment-container'>
 							<div className='assessment-container__img'>
 								<img src={notebook} />
@@ -110,14 +131,18 @@ const Assessment = ({ assessments, history }) => {
 
 							<p>{assessment.name}</p>
 							<p>{convertDurationToMins(assessment?.durations)} minutes</p>
-							<ButtonSmall
-								onClick={() => {
-									history.push(`/app/assessment/questions/${assessment?.id}`);
-								}}
-								disabled={assessment.questions.length === 0}
-							>
-								Take Assessment
-							</ButtonSmall>
+							{active === 1 ? (
+								<ButtonSmall
+									onClick={() => {
+										history.push(`/app/assessment/questions/${assessment?.id}`);
+									}}
+									disabled={assessment.questions.length === 0}
+								>
+									Take Assessment
+								</ButtonSmall>
+							) : (
+								<p>{Number.isNaN(assessment?.score) ? 0 : assessment?.score}</p>
+							)}
 						</div>
 					))
 				)}
