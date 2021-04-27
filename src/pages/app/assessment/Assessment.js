@@ -62,7 +62,7 @@ const Assessment = ({ assessments, history }) => {
 	const dispatch = useDispatch();
 	const { convertDurationToMins } = useAssessment();
 	const [active, setActive] = React.useState(1);
-	const [current, setCurrent] = React.useState('active');
+
 	const loadingAssessment = useSelector(getLoadingState('getAssessments'));
 	const [currentAssessments, setCurrentAssessments] = React.useState([]);
 
@@ -77,7 +77,7 @@ const Assessment = ({ assessments, history }) => {
 			}
 
 			if (active === 2) {
-				setCurrentAssessments([...assessments?.filter((assessment) => assessment?.completed_at !== null)]);
+				setCurrentAssessments([...assessments?.filter((assessment) => assessment?.status !== null)]);
 			}
 		}
 	}, [assessments, active]);
@@ -93,7 +93,6 @@ const Assessment = ({ assessments, history }) => {
 							active: active === 1,
 						})}
 						onClick={() => {
-							setCurrent('active');
 							setActive(1);
 						}}
 					>
@@ -105,7 +104,6 @@ const Assessment = ({ assessments, history }) => {
 						})}
 						onClick={() => {
 							setActive(2);
-							setCurrent('completed');
 						}}
 					>
 						Completed
