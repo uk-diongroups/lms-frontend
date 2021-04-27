@@ -206,8 +206,6 @@ const Questions = ({ history, match: { params }, assessmentQuestions, assessment
 		});
 	};
 
-	console.log(assessment);
-
 	return (
 		<Wrapper>
 			<small>academy/2021assesment/april</small>
