@@ -53,6 +53,7 @@ const Routes = () => (
 			</Switch>
 		</Suspense>
 	</Router>
+</>
 );
 
 export default Routes;
