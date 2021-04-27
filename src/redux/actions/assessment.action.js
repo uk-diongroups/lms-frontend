@@ -29,6 +29,8 @@ export const getAssessment = (assessmentId) => async (dispatch) => {
 			data: { data },
 		} = await request.get(`/assesment/${assessmentId}`);
 
+		console.log(data);
+		
 		dispatch({
 			type: t.GET_ASSESSMENT,
 			payload: data,

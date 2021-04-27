@@ -2,11 +2,12 @@ import { BlockLoader, ButtonLoader } from 'components/Loaders';
 import useAssessment from 'hooks/assessment';
 import React from 'react';
 import { useDispatch, useSelector, connect } from 'react-redux';
-import { getQuestionsByAssessmentId, submitQuestions } from 'redux/actions/assessment.action';
+import { getAssessment, getQuestionsByAssessmentId, submitQuestions } from 'redux/actions/assessment.action';
 import styled from 'styled-components';
 import { getLoadingState } from 'utils/functions';
 import classnames from 'classnames';
 import Countdown from 'react-countdown';
+import { isEmpty } from 'lodash';
 
 const Wrapper = styled.div`
 	padding-top: 20px;
@@ -167,11 +168,12 @@ const Btn = styled.div`
 	}
 `;
 
-const Questions = ({ history, match: { params }, assessmentQuestions }) => {
+const Questions = ({ history, match: { params }, assessmentQuestions, assessment }) => {
 	const { assessmentId } = params;
 	const { formatOptions, calculatePercentageCompleted, convertDurationToMins } = useAssessment();
 
-	const loadingQuestions = useSelector(getLoadingState('getQuestionsByAssessmentId'));
+	const loadingQuestions = useSelector(getLoadingState('getAssessments'));
+	const loadingAssessment = useSelector(getLoadingState('getQuestionsByAssessmentId'));
 	const loadingSubmit = useSelector(getLoadingState('submitQuestions'));
 
 	const [questions, setQuestions] = React.useState([]);
@@ -181,16 +183,17 @@ const Questions = ({ history, match: { params }, assessmentQuestions }) => {
 
 	const dispatch = useDispatch();
 	React.useEffect(() => {
-		dispatch(getQuestionsByAssessmentId(assessmentId));
+		dispatch(getAssessment(assessmentId));
+		// dispatch(getQuestionsByAssessmentId(assessmentId));
 	}, []);
 
 	React.useEffect(() => {
-		if (assessmentQuestions.length) {
-			const { durations } = assessmentQuestions[0].assesment_id;
-			setQuestions([...assessmentQuestions.map((question) => ({ ...question, answer: '' }))]);
+		if (!isEmpty(assessment)) {
+			const { durations } = assessment;
 			setDuration({ ...durations });
+			setQuestions([...assessment?.questions?.map((question) => ({ ...question, answer: '' }))]);
 		}
-	}, [assessmentQuestions]);
+	}, [assessmentQuestions, assessment]);
 
 	React.useEffect(() => {
 		let percentage = calculatePercentageCompleted(activeQuestion, questions.length);
@@ -203,19 +206,21 @@ const Questions = ({ history, match: { params }, assessmentQuestions }) => {
 		});
 	};
 
+	console.log(assessment);
+
 	return (
 		<Wrapper>
 			<small>academy/2021assesment/april</small>
-			{loadingQuestions ? (
+			{loadingAssessment ? (
 				<BlockLoader />
 			) : (
 				<>
 					<TimeRemain>
 						<div style={{ width: '90%', margin: 'auto' }}>
-							<h4>Time Remaining</h4>
+							{/* <h4>Time Remaining</h4>
 							<h2>
 								<Countdown date={Date.now() + convertDurationToMins(duration) * 60000} />
-							</h2>
+							</h2> */}
 							<Direction>
 								<div className='left'>
 									<button
@@ -304,6 +309,6 @@ const Questions = ({ history, match: { params }, assessmentQuestions }) => {
 };
 
 export default connect(
-	({ assessments: { questions: assessmentQuestions } }) => ({ assessmentQuestions }),
+	({ assessments: { questions: assessmentQuestions, assessment } }) => ({ assessmentQuestions, assessment }),
 	null,
 )(Questions);

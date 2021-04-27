@@ -125,7 +125,7 @@ const Result = ({ assessment, match: { params } }) => {
 							<p>You’ve successfully completed {assessment?.name}</p>
 						</div>
 						<div className='percentage-box'>
-							<h2>{assessment?.score}</h2>
+							<h2>{assessment?.score || 0}</h2>
 							<small>Score</small>
 						</div>
 
