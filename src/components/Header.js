@@ -66,7 +66,7 @@ const TopBar = styled.div``;
 const Header = ({ children }) => {
 	return (
 		<Wrapper>
-			<img src={logo} />
+			<p></p>
 			<LeftWrapper>
 				<div>
 					<img src={notification} />

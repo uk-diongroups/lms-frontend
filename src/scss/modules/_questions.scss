@@ -1,0 +1,32 @@
+.questions {
+	&__block {
+		border-top: 1px solid #f2f4f8;
+		margin-top: 1%;
+		padding: 3%;
+		text-align: center;
+	}
+
+	&__duration {
+		h4 {
+			font-style: normal;
+			font-weight: normal;
+			font-size: 17px;
+			line-height: 23px;
+			text-align: center;
+			letter-spacing: 0.02em;
+			color: $orange;
+			margin-bottom: 5px;
+		}
+		h2 {
+			span {
+				font-style: normal;
+				font-weight: bold;
+				font-size: 28px;
+				line-height: 44px;
+				letter-spacing: 0.02em;
+				color: #1b2056;
+				opacity: 0.7;
+			}
+		}
+	}
+}

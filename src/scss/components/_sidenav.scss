@@ -1,0 +1,44 @@
+.sidenav {
+	position: relative;
+	padding-left: 17px;
+	padding-right: 9px;
+	width: 250px;
+	background-color: #1b2056;
+	height: 100vh;
+
+	&__logo {
+		text-align: center;
+		margin-top: 32px;
+	}
+
+	&__list {
+		margin-top: 34px;
+		li {
+			width: 100%;
+
+			a {
+				color: $white;
+				display: block;
+				border-radius: 0px 100px 100px 0px;
+				padding: 13px 0px;
+				padding-left: 22px;
+				display: flex;
+				align-items: center;
+				font-size: 1rem;
+				font-family: inherit;
+				&.active {
+					background: rgba(134, 147, 201, 0.08);
+					span {
+						font-weight: 600;
+					}
+					color: $orange;
+				}
+				svg {
+					height: 16px;
+					width: 16px;
+					margin-right: 12px;
+				}
+			}
+		}
+	}
+}
