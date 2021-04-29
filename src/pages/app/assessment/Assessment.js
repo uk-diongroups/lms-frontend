@@ -129,14 +129,14 @@ const Assessment = ({ assessments, history }) => {
 								<img src={notebook} />
 							</div>
 
-							<p>{assessment.name}</p>
-							<p>{convertDurationToMins(assessment?.durations)} minutes</p>
+							<p>{assessment?.assesments_id?.name}</p>
+							<p>{convertDurationToMins(assessment?.assesments_id?.durations)} minutes</p>
 							{active === 1 ? (
 								<ButtonSmall
 									onClick={() => {
 										history.push(`/app/assessment/questions/${assessment?.id}`);
 									}}
-									disabled={assessment.questions.length === 0}
+									disabled={assessment?.assesments_id?.questions?.length === 0}
 								>
 									Take Assessment
 								</ButtonSmall>

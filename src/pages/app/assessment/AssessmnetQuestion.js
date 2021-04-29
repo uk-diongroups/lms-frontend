@@ -29,14 +29,17 @@ const AssessmnetQuestion = ({ history, match: { params }, assessmentQuestions, a
 
 	React.useEffect(() => {
 		if (!isEmpty(assessment)) {
-			const { durations } = assessment;
-			setDuration({ ...durations });
+			if (assessment?.assesments_id?.durations) {
+				const {
+					assesments_id: { durations },
+				} = assessment;
+				console.log(durations);
+				setDuration({ ...durations });
+			}
 		}
 	}, [assessment]);
 
-	const submtQuestiononTimeCompleted = () => {
-        
-    };
+	const submtQuestiononTimeCompleted = () => {};
 
 	return (
 		<Wrapper>

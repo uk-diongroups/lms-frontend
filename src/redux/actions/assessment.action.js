@@ -8,10 +8,11 @@ export const getAssessments = () => async (dispatch) => {
 	try {
 		const {
 			data: { data },
-		} = await request.get(`/assesment`);
+		} = await request.get(`/users/assesment`);
 
 		// let assessments = data.splice(data.length - 10, 10);
 
+		console.log(data);
 		dispatch({
 			type: t.GET_ASSESSMENTS,
 			payload: { assessments: data },
@@ -28,7 +29,6 @@ export const getAssessment = (assessmentId) => async (dispatch) => {
 		const {
 			data: { data },
 		} = await request.get(`/assesment/${assessmentId}`);
-
 
 		dispatch({
 			type: t.GET_ASSESSMENT,
