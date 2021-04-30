@@ -112,7 +112,7 @@ const Result = ({ assessment, match: { params } }) => {
 
 	const loading = useSelector(getLoadingState('getAssessment'));
 
-	const displayResultText = () => {
+	const displayResultText = (score) => {
 		if (score > 70) {
 			return 'Bravo! You’ve made it';
 		}
