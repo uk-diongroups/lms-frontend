@@ -24,7 +24,7 @@ export const getAssessments = () => async (dispatch) => {
 };
 
 export const getAssessment = (assessmentId) => async (dispatch) => {
-	loading('getAssessments');
+	loading('getAssessment');
 	try {
 		const {
 			data: { data },
@@ -35,9 +35,10 @@ export const getAssessment = (assessmentId) => async (dispatch) => {
 			payload: data,
 		});
 	} catch (err) {
+		console.log(err);
 		errorHandler(err);
 	}
-	endLoading('getAssessments');
+	endLoading('getAssessment');
 };
 
 export const getQuestionsByAssessmentId = (assessmentId) => async (dispatch) => {

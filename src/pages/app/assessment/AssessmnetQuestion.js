@@ -18,7 +18,7 @@ const Wrapper = styled.div`
 const AssessmnetQuestion = ({ history, match: { params }, assessmentQuestions, assessment }) => {
 	const { assessmentId } = params;
 
-	const loadingAssessment = useSelector(getLoadingState('getAssessments'));
+	const loadingAssessment = useSelector(getLoadingState('getAssessment'));
 
 	const [duration, setDuration] = React.useState({});
 
@@ -29,11 +29,8 @@ const AssessmnetQuestion = ({ history, match: { params }, assessmentQuestions, a
 
 	React.useEffect(() => {
 		if (!isEmpty(assessment)) {
-			if (assessment?.assesments_id?.durations) {
-				const {
-					assesments_id: { durations },
-				} = assessment;
-				console.log(durations);
+			if (assessment?.durations) {
+				const { durations } = assessment;
 				setDuration({ ...durations });
 			}
 		}

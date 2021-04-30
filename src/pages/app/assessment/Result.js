@@ -112,13 +112,23 @@ const Result = ({ assessment, match: { params } }) => {
 
 	const loading = useSelector(getLoadingState('getAssessment'));
 
+	const displayResultText = () => {
+		if (score > 70) {
+			return 'Bravo! You’ve made it';
+		}
+		if (score <= 50) {
+			return 'You can do better';
+		} else {
+		}
+	};
+
 	return (
 		<Wrapper>
 			{loading ? (
 				<BlockLoader />
 			) : (
 				<>
-					<h3>Bravo! You’ve made it</h3>
+					<h3>{displayResultText(assessment?.score || 0)}</h3>
 					<div className='score'>
 						<div className='status'>
 							<img src={NotePad} alt='' style={{ padding: '16px' }} />
