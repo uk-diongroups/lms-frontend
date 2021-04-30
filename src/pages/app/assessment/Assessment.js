@@ -134,7 +134,7 @@ const Assessment = ({ assessments, history }) => {
 							{active === 1 ? (
 								<ButtonSmall
 									onClick={() => {
-										history.push(`/app/assessment/questions/${assessment?.id}`);
+										history.push(`/app/assessment/questions/${assessment?.assesments_id?.id}`);
 									}}
 									disabled={assessment?.assesments_id?.questions?.length === 0}
 								>
