@@ -92,7 +92,7 @@ video {
 }
 body {
 	overflow-x: hidden;
-	font-family: PoppinsLight, sans-serif;
+	font-family: AvenirNextRegular, sans-serif;
 	overflow-x: hidden;
 }
 
@@ -159,6 +159,7 @@ html {
 
 @import './toast.scss';
 @import './util.scss';
+@import './modules/assessment';
 // @import './custom.scss';
 // @import './calendar.scss';
 // @import './not-found.scss';
