@@ -10,7 +10,8 @@ import resource7 from 'assets/img/resource7.png';
 import resource8 from 'assets/img/resource8.png';
 import InputField from 'components/form/Input';
 import { BlockLoader } from 'components/Loaders';
-import { Button, Grid, H2 } from 'components/Styles';
+import { Button, Grid, GridEqual, H2 } from 'components/Styles';
+import { CurrentlyLearning } from '../dashboard/Dashboard.js'
 import React from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
 import Slider from 'react-slick';
@@ -82,7 +83,7 @@ const SliderWrapper = styled.div`
 
 const Footer = styled.div`
 	position: relative;
-	margin-top: 194px;
+	margin-top: 100px;
 	img {
 		height: 340px;
 		position: absolute;
@@ -213,35 +214,76 @@ const Academy = ({ courses }) => {
 				</Slider>
 			</SliderWrapper> */}
 
-			{/* <section className='mb-30'>
-				<H2>Recommended</H2>
-				<GridEqual count={3} gap={'23px'}>
-					<Recommended>
-						<img src={recom} alt='recommend' />
-						<div>
-							<h4>UI/UX design</h4>
-							<h2>Architecture II</h2>
-							<p>Lorem Ipsum is simply dummy text of the printing industry.</p>
+			<section className='mb-30'>
+				<H2>popular courses</H2>
+				<CurrentlyLearning>
+					<GridEqual count={4} gap={'30px'}>
+						<div className="learning_progress">
+							<div className="learning_img">
+								<img src="https://images.unsplash.com/photo-1615385639736-362b69696227?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zmxvd2VyJTIwYm91cXVldHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt=""/>
+							</div>
+							<div className="extra_details">
+								<h4>Advanced Neurobiology</h4>
+								<small>ProfessorYan Zhang</small>
+								<br />
+								<br />
+								<small>1hr 20m of 2hr 45m</small>
+								<br />
+								<br />
+								<button className="btn-primary">Resume</button>
+							</div>
 						</div>
-					</Recommended>
-					<Recommended>
-						<img src={recom} alt='recommend2' />
-						<div>
-							<h4>UI/UX design</h4>
-							<h2>Architecture II</h2>
-							<p>Lorem Ipsum is simply dummy text of the printing industry.</p>
+
+						<div className="learning_progress">
+							<div className="learning_img">
+								<img src="https://images.unsplash.com/photo-1615385639736-362b69696227?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zmxvd2VyJTIwYm91cXVldHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt=""/>
+							</div>
+							<div className="extra_details">
+								<h4>Advanced Neurobiology</h4>
+								<small>ProfessorYan Zhang</small>
+								<br />
+								<br />
+								<small>1hr 20m of 2hr 45m</small>
+								<br />
+								<br />
+								<button className="btn-primary">Resume</button>
+							</div>
 						</div>
-					</Recommended>
-					<Recommended>
-						<img src={recom} alt='recommend3' />
-						<div>
-							<h4>UI/UX design</h4>
-							<h2>Architecture II</h2>
-							<p>Lorem Ipsum is simply dummy text of the printing industry.</p>
+
+						<div className="learning_progress">
+							<div className="learning_img">
+								<img src="https://images.unsplash.com/photo-1615385639736-362b69696227?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zmxvd2VyJTIwYm91cXVldHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt=""/>
+							</div>
+							<div className="extra_details">
+								<h4>Advanced Neurobiology</h4>
+								<small>ProfessorYan Zhang</small>
+								<br />
+								<br />
+								<small>1hr 20m of 2hr 45m</small>
+								<br />
+								<br />
+								<button className="btn-primary">Resume</button>
+							</div>
 						</div>
-					</Recommended>
-				</GridEqual>
-			</section> */}
+
+						<div className="learning_progress">
+							<div className="learning_img">
+								<img src="https://images.unsplash.com/photo-1615385639736-362b69696227?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zmxvd2VyJTIwYm91cXVldHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt=""/>
+							</div>
+							<div className="extra_details">
+								<h4>Advanced Neurobiology</h4>
+								<small>ProfessorYan Zhang</small>
+								<br />
+								<br />
+								<small>1hr 20m of 2hr 45m</small>
+								<br />
+								<br />
+								<button className="btn-primary">Resume</button>
+							</div>
+						</div>
+					</GridEqual>
+				</CurrentlyLearning>
+			</section>
 
 			<Footer>
 				<img src={homefooter} alt='homefooter' />

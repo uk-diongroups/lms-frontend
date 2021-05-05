@@ -16,7 +16,7 @@ import graph from 'assets/img/graph.png';
 
 const Wrapper = styled.div`
 	padding-top: 41px;
-	padding-left: 25px;
+	padding-left: 33px;
 	padding-right: 33px;
 `;
 
@@ -81,8 +81,52 @@ const Graph = styled.div`
 	}
 `;
 
-const CurrentlyLearing = styled.div`
+export const CurrentlyLearning = styled.div`
+	h3{
+		font-weight: 500;
+		font-size: 24px;
+		line-height: 33px;
+		color: #242582;
+		margin-bottom: 20px;
+		margin-top: 50px;
+	}
 
+	& .learning_img {
+		img{
+			width: 100%;
+			border-radius: 10px 10px 0px 0px;
+			height: 190px;	
+		}
+	}
+
+	& .extra_details{
+		border: 3px solid #F6F7F8;
+    	padding: 8px;
+		h4{
+			font-weight: 600;
+		}
+		small{
+			color: #6A7588;
+			font-weight: normal;
+			font-size: 12px;
+			line-height: 18px;
+			letter-spacing: 0.5px;			
+		}
+		button{
+			justify-content: center;
+			align-items: center;
+			padding: 16px 31px;
+			height: 48px;
+			left: 0px;
+			right: 58px;
+			top: 99px;
+			background: #0BA759;
+			border-radius: 8px;
+			border: none;
+			color: white;
+			font-size: 16px;
+		}
+	}
 `
 
 const courses = [
@@ -194,7 +238,147 @@ const Dashboard = () => {
 				</CourseProgress>
 			</Grid>
 
-			<Grid columns={['1.3fr', '1fr']} gap={'45px'}>
+			<Grid>
+				<CurrentlyLearning>
+					<h3>CURRENTLY LEARNING</h3>
+					<GridEqual count={4} gap={'30px'}>
+						<div className="learning_progress">
+							<div className="learning_img">
+								<img src="https://images.unsplash.com/photo-1615385639736-362b69696227?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zmxvd2VyJTIwYm91cXVldHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt=""/>
+							</div>
+							<div className="extra_details">
+								<h4>Advanced Neurobiology</h4>
+								<small>ProfessorYan Zhang</small>
+								<br />
+								<br />
+								<small>1hr 20m of 2hr 45m</small>
+								<br />
+								<br />
+								<button className="btn-primary">Resume</button>
+							</div>
+						</div>
+
+						<div className="learning_progress">
+							<div className="learning_img">
+								<img src="https://images.unsplash.com/photo-1615385639736-362b69696227?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zmxvd2VyJTIwYm91cXVldHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt=""/>
+							</div>
+							<div className="extra_details">
+								<h4>Advanced Neurobiology</h4>
+								<small>ProfessorYan Zhang</small>
+								<br />
+								<br />
+								<small>1hr 20m of 2hr 45m</small>
+								<br />
+								<br />
+								<button className="btn-primary">Resume</button>
+							</div>
+						</div>
+
+						<div className="learning_progress">
+							<div className="learning_img">
+								<img src="https://images.unsplash.com/photo-1615385639736-362b69696227?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zmxvd2VyJTIwYm91cXVldHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt=""/>
+							</div>
+							<div className="extra_details">
+								<h4>Advanced Neurobiology</h4>
+								<small>ProfessorYan Zhang</small>
+								<br />
+								<br />
+								<small>1hr 20m of 2hr 45m</small>
+								<br />
+								<br />
+								<button className="btn-primary">Resume</button>
+							</div>
+						</div>
+
+						<div className="learning_progress">
+							<div className="learning_img">
+								<img src="https://images.unsplash.com/photo-1615385639736-362b69696227?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zmxvd2VyJTIwYm91cXVldHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt=""/>
+							</div>
+							<div className="extra_details">
+								<h4>Advanced Neurobiology</h4>
+								<small>ProfessorYan Zhang</small>
+								<br />
+								<br />
+								<small>1hr 20m of 2hr 45m</small>
+								<br />
+								<br />
+								<button className="btn-primary">Resume</button>
+							</div>
+						</div>
+					</GridEqual>
+				</CurrentlyLearning>
+
+				<CurrentlyLearning>
+					<h3>RECOMMENDED FOR YOU</h3>
+					<GridEqual count={4} gap={'30px'}>
+						<div className="learning_progress">
+							<div className="learning_img">
+								<img src="https://images.unsplash.com/photo-1615385639736-362b69696227?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zmxvd2VyJTIwYm91cXVldHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt=""/>
+							</div>
+							<div className="extra_details">
+								<h4>Advanced Neurobiology</h4>
+								<small>ProfessorYan Zhang</small>
+								<br />
+								<br />
+								<small>1hr 20m of 2hr 45m</small>
+								<br />
+								<br />
+								<button className="btn-primary">Resume</button>
+							</div>
+						</div>
+
+						<div className="learning_progress">
+							<div className="learning_img">
+								<img src="https://images.unsplash.com/photo-1615385639736-362b69696227?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zmxvd2VyJTIwYm91cXVldHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt=""/>
+							</div>
+							<div className="extra_details">
+								<h4>Advanced Neurobiology</h4>
+								<small>ProfessorYan Zhang</small>
+								<br />
+								<br />
+								<small>1hr 20m of 2hr 45m</small>
+								<br />
+								<br />
+								<button className="btn-primary">Resume</button>
+							</div>
+						</div>
+
+						<div className="learning_progress">
+							<div className="learning_img">
+								<img src="https://images.unsplash.com/photo-1615385639736-362b69696227?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zmxvd2VyJTIwYm91cXVldHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt=""/>
+							</div>
+							<div className="extra_details">
+								<h4>Advanced Neurobiology</h4>
+								<small>ProfessorYan Zhang</small>
+								<br />
+								<br />
+								<small>1hr 20m of 2hr 45m</small>
+								<br />
+								<br />
+								<button className="btn-primary">Resume</button>
+							</div>
+						</div>
+
+						<div className="learning_progress">
+							<div className="learning_img">
+								<img src="https://images.unsplash.com/photo-1615385639736-362b69696227?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zmxvd2VyJTIwYm91cXVldHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt=""/>
+							</div>
+							<div className="extra_details">
+								<h4>Advanced Neurobiology</h4>
+								<small>ProfessorYan Zhang</small>
+								<br />
+								<br />
+								<small>1hr 20m of 2hr 45m</small>
+								<br />
+								<br />
+								<button className="btn-primary">Resume</button>
+							</div>
+						</div>
+					</GridEqual>
+				</CurrentlyLearning>
+			</Grid>
+
+			{/* <Grid columns={['1.3fr', '1fr']} gap={'45px'}>
 				<Courses>
 					<H1>My courses</H1>
 					<DashboardNav>
@@ -215,7 +399,7 @@ const Dashboard = () => {
 
 					<img src={graph} />
 				</Graph>
-			</Grid>
+			</Grid> */}
 		</Wrapper>
 	);
 };
