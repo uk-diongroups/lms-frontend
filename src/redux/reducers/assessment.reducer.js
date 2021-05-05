@@ -14,6 +14,7 @@ export default (state = initialState, { type, payload }) => {
 			return {
 				...state,
 				assessments: payload.assessments,
+				assessment: {},
 			};
 		case t.GET_ASSESSMENT:
 			return {

@@ -1,19 +1,21 @@
 import React from 'react';
 import generateID from 'uuid/v4';
-import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import logo from 'assets/img/logo.png';
+import { NavLink, withRouter } from 'react-router-dom';
 import icons from 'assets/icons/icon-collections.svg';
+import { logoutUser } from 'redux/actions/auth.action';
+import { useDispatch } from 'react-redux';
 
 const sideMenus = [
-	{
-		menuName: 'Home',
-		iconName: 'home',
-		path: '/app/home',
-	},
 	{
 		menuName: 'Dashboard',
 		iconName: 'dashboard',
 		path: '/app/dashboard/',
+	},
+	{
+		menuName: 'Academy',
+		iconName: 'home',
+		path: '/app/academy',
 	},
 	{
 		menuName: 'My Courses',
@@ -31,51 +33,35 @@ const sideMenus = [
 		iconName: 'settings',
 		path: '/app/settings',
 	},
+	{
+		menuName: 'Logout',
+		iconName: 'settings',
+		path: '/logout',
+	},
 ];
-const Wrapper = styled.div`
-	position: relative;
-	padding-left: 17px;
-	padding-right: 9px;
-	width: 275px;
 
-	ul {
-		margin-top: 34px;
-		li {
-			width: 100%;
-
-			a {
-				color: #4f5d74;
-				display: block;
-				border-radius: 0px 100px 100px 0px;
-				padding: 13px 0px;
-				padding-left: 22px;
-				display: flex;
-				align-items: center;
-				font-size: 1rem;
-				font-family: 'Rubik', sans-serif;
-				&.active {
-					background: rgba(134, 147, 201, 0.08);
-					span {
-						font-weight: 600;
-					}
-				}
-				svg {
-					height: 16px;
-					width: 16px;
-					margin-right: 12px;
-				}
-			}
-		}
-	}
-`;
-
-const SideNav = ({ state, setState }) => {
+const SideNav = withRouter(({ history, state }) => {
+	const dispatch = useDispatch();
 	return (
-		<Wrapper>
-			<ul className={state}>
+		<div className='sidenav'>
+			<div className='sidenav__logo'>
+				<img src={logo} alt='logo' />
+			</div>
+			<ul className={`sidenav__list ${state}`}>
 				{sideMenus.map(({ path, menuName, iconName }) => (
 					<li key={generateID()}>
-						<NavLink to={path}>
+						<NavLink
+							to={path}
+							onClick={(e) => {
+								e.preventDefault();
+								console.log(e, menuName);
+								if (menuName === 'Logout') {
+									dispatch(logoutUser());
+								} else {
+									history.push(path);
+								}
+							}}
+						>
 							<svg>
 								<use xlinkHref={`${icons}#${iconName}`} />
 							</svg>
@@ -84,8 +70,8 @@ const SideNav = ({ state, setState }) => {
 					</li>
 				))}
 			</ul>
-		</Wrapper>
+		</div>
 	);
-};
+});
 
 export default SideNav;

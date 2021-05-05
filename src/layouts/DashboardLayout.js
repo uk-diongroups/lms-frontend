@@ -18,8 +18,8 @@ const ChildContainer = styled.div`
 	}
 	& > div:nth-child(2) {
 		background: white;
-		width: calc(100vw - 275px);
-		overflow-y: scroll;
+		width: calc(100vw - 253px);
+		// overflow-y: scroll;
 		min-height: calc(100vh - 84px);
 	}
 `;
@@ -34,10 +34,12 @@ const DashboardLayout = ({ children }) => {
 
 	return (
 		<ParentContainer>
-			<Header handleNavBar={handleNavBar} isOpen={isOpen} />
 			<ChildContainer>
 				<SideNav left={left} />
-				<div handleNavBar={handleNavBar}>{children}</div>
+				<div handleNavBar={handleNavBar}>
+					<Header handleNavBar={handleNavBar} isOpen={isOpen} />
+					{children}
+				</div>
 			</ChildContainer>
 		</ParentContainer>
 	);

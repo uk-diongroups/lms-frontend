@@ -8,10 +8,11 @@ export const getAssessments = () => async (dispatch) => {
 	try {
 		const {
 			data: { data },
-		} = await request.get(`/assesment`);
+		} = await request.get(`/users/assesment`);
+
+		// let assessments = data.splice(data.length - 10, 10);
 
 		console.log(data);
-
 		dispatch({
 			type: t.GET_ASSESSMENTS,
 			payload: { assessments: data },
@@ -23,7 +24,7 @@ export const getAssessments = () => async (dispatch) => {
 };
 
 export const getAssessment = (assessmentId) => async (dispatch) => {
-	loading('getAssessments');
+	loading('getAssessment');
 	try {
 		const {
 			data: { data },
@@ -34,9 +35,10 @@ export const getAssessment = (assessmentId) => async (dispatch) => {
 			payload: data,
 		});
 	} catch (err) {
+		console.log(err);
 		errorHandler(err);
 	}
-	endLoading('getAssessments');
+	endLoading('getAssessment');
 };
 
 export const getQuestionsByAssessmentId = (assessmentId) => async (dispatch) => {

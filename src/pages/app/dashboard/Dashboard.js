@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import cheers from 'assets/img/cheers.png';
 import { Grid, GridEqual, H1, Flex, DashboardNav } from 'components/Styles';
-import icons from 'assets/icons/icon-collections.svg';
+// import icons from 'assets/icons/icon-collections.svg';
+import icons from 'assets/img/new_saly.svg';
 import Course from 'components/Course';
 import project from 'assets/img/project.png';
 import figma from 'assets/img/figma.svg';
@@ -22,12 +23,12 @@ const Wrapper = styled.div`
 const TopSection = styled.div`
 	margin-bottom: 40px;
 	& > div:nth-child(1) {
-		padding-top: 46px;
+		padding-top: 55px;
 		margin-bottom: 24px;
 		padding-left: 25px;
 		background: #f8fafb;
 		position: relative;
-		height: 160px;
+		height: 185px;
 		border-radius: 14px;
 		display: flex;
 		justify-content: space-between;
@@ -57,15 +58,17 @@ const CourseProgress = styled.div`
 	& .progress_block {
 		background: #f8fafb;
 		border-radius: 14px;
-		margin-bottom: 43px;
+		margin-bottom: 23px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		span {
 			display: block;
 			color: #f64c71;
-			font-size: 4rem;
+			font-size: 2.5rem;
 			margin-right: 11px;
+			padding: 16px;
+			font-weight: bold;
 		}
 	}
 `;
@@ -77,6 +80,10 @@ const Graph = styled.div`
 		width: 100%;
 	}
 `;
+
+const CurrentlyLearing = styled.div`
+
+`
 
 const courses = [
 	{
@@ -119,7 +126,7 @@ const courses = [
 const Dashboard = () => {
 	return (
 		<Wrapper>
-			<Grid columns={['1.3fr', '1fr']} gap={'45px'}>
+			<Grid columns={['50%', '1fr']} gap={'45px'}>
 				{/* Top section */}
 				<TopSection>
 					<div>
@@ -128,12 +135,16 @@ const Dashboard = () => {
 							<p>It’s good to see you again.</p>
 						</div>
 
-						<svg>
-							<use xlinkHref={`${icons}#user`} />
+						<div>
+							<img src={icons} style={{width: '100%',height: 'fit-content',left:'25%'}}/> 
+						</div>
+
+						{/* <svg>
+							<use xlinkHref={`${icons}#`} />
 						</svg>
-						<img src={cheers} />
+						<img src={cheers} /> */}
 					</div>
-					<Grid columns={['500px', '1fr']} gap={'23px'}>
+					{/* <Grid columns={['500px', '1fr']} gap={'23px'}>
 						<Course
 							course={{
 								img: project,
@@ -147,7 +158,7 @@ const Dashboard = () => {
 							<img className='mr-16' src={backarrow} alt='backfarrow' />
 							<img src={frontarrow} alt='frontarrow' />
 						</Flex>
-					</Grid>
+					</Grid> */}
 				</TopSection>
 
 				{/*my courses */}
@@ -156,7 +167,7 @@ const Dashboard = () => {
 						<div className='progress_block'>
 							<span>11</span>
 							<p>
-								Courses <br /> Completed
+								Courses <br /> Enrolled
 							</p>
 						</div>
 						<div className='progress_block'>
@@ -170,13 +181,13 @@ const Dashboard = () => {
 						<div className='progress_block'>
 							<span>11</span>
 							<p>
-								Courses <br /> Completed
+								Courses <br /> Assessment
 							</p>
 						</div>
 						<div className='progress_block'>
 							<span>11</span>
 							<p>
-								Courses <br /> Completed
+								Pending <br /> Assessment
 							</p>
 						</div>
 					</GridEqual>

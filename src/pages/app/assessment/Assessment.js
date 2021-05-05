@@ -62,13 +62,28 @@ const Assessment = ({ assessments, history }) => {
 	const dispatch = useDispatch();
 	const { convertDurationToMins } = useAssessment();
 	const [active, setActive] = React.useState(1);
+
 	const loadingAssessment = useSelector(getLoadingState('getAssessments'));
+	const [currentAssessments, setCurrentAssessments] = React.useState([]);
 
 	React.useEffect(() => {
 		dispatch(getAssessments());
 	}, []);
 
-	console.log({ assessments });
+	React.useEffect(() => {
+		if (assessments?.length) {
+			if (active === 1) {
+				setCurrentAssessments([...assessments?.filter((assessment) => assessment?.completed_at === null)]);
+			}
+
+			if (active === 2) {
+				setCurrentAssessments([...assessments?.filter((assessment) => assessment?.completed_at !== null)]);
+			}
+		}
+	}, [assessments, active]);
+
+	// console.log(currentAssessments);
+
 	return (
 		<>
 			<Wrapper>
@@ -77,7 +92,9 @@ const Assessment = ({ assessments, history }) => {
 						className={classnames('', {
 							active: active === 1,
 						})}
-						onClick={() => setActive(1)}
+						onClick={() => {
+							setActive(1);
+						}}
 					>
 						Active
 					</li>
@@ -85,39 +102,47 @@ const Assessment = ({ assessments, history }) => {
 						className={classnames('', {
 							active: active === 2,
 						})}
-						onClick={() => setActive(2)}
+						onClick={() => {
+							setActive(2);
+						}}
 					>
 						Completed
 					</li>
-					<li
+					{/* <li
 						className={classnames('', {
 							active: active === 3,
 						})}
 						onClick={() => setActive(3)}
 					>
 						Missed
-					</li>
+					</li> */}
 				</DashboardNav>
 
 				{loadingAssessment ? (
 					<BlockLoader />
+				) : currentAssessments.length === 0 ? (
+					<p>No assessments</p>
 				) : (
-					assessments?.map((assessment) => (
+					currentAssessments?.map((assessment) => (
 						<div className='assessment-container'>
 							<div className='assessment-container__img'>
 								<img src={notebook} />
 							</div>
 
-							<p>{assessment.name}</p>
-							<p>{convertDurationToMins(assessment?.durations)} minutes</p>
-							<ButtonSmall
-								onClick={() => {
-									history.push(`/app/assessment/questions/${assessment?.id}`);
-								}}
-								disabled={assessment.questions.length === 0}
-							>
-								Take Assessment
-							</ButtonSmall>
+							<p>{assessment?.assesments_id?.name}</p>
+							<p>{convertDurationToMins(assessment?.assesments_id?.durations)} minutes</p>
+							{active === 1 ? (
+								<ButtonSmall
+									onClick={() => {
+										history.push(`/app/assessment/questions/${assessment?.assesments_id?.id}`);
+									}}
+									disabled={assessment?.assesments_id?.questions?.length === 0}
+								>
+									Take Assessment
+								</ButtonSmall>
+							) : (
+								<p>{Number.isNaN(assessment?.score) ? 0 : assessment?.score}</p>
+							)}
 						</div>
 					))
 				)}

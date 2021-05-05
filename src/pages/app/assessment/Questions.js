@@ -2,23 +2,15 @@ import { BlockLoader, ButtonLoader } from 'components/Loaders';
 import useAssessment from 'hooks/assessment';
 import React from 'react';
 import { useDispatch, useSelector, connect } from 'react-redux';
-import { getQuestionsByAssessmentId, submitQuestions } from 'redux/actions/assessment.action';
+import { getAssessment, submitQuestions } from 'redux/actions/assessment.action';
 import styled from 'styled-components';
-import { getLoadingState } from 'utils/functions';
+import { convertToChar, getLoadingState } from 'utils/functions';
 import classnames from 'classnames';
-import Countdown from 'react-countdown';
 
-const Wrapper = styled.div`
-	padding-top: 20px;
-	padding-left: 25px;
-	padding-right: 33px;
-`;
+import { isEmpty } from 'lodash';
+import { withRouter } from 'react-router';
 
 const TimeRemain = styled.div`
-	border-top: 1px solid #f2f4f8;
-	margin-top: 1%;
-	padding: 3%;
-	text-align: center;
 	h4 {
 		font-style: normal;
 		font-weight: normal;
@@ -167,30 +159,23 @@ const Btn = styled.div`
 	}
 `;
 
-const Questions = ({ history, match: { params }, assessmentQuestions }) => {
-	const { assessmentId } = params;
-	const { formatOptions, calculatePercentageCompleted, convertDurationToMins } = useAssessment();
+const Questions = withRouter(({ history, assessmentId, assessment }) => {
+	const { formatOptions, calculatePercentageCompleted } = useAssessment();
 
-	const loadingQuestions = useSelector(getLoadingState('getQuestionsByAssessmentId'));
+	// const loadingAssessment = useSelector(getLoadingState('getAssessments'));
 	const loadingSubmit = useSelector(getLoadingState('submitQuestions'));
 
 	const [questions, setQuestions] = React.useState([]);
 	const [activeQuestion, setActiveQuestion] = React.useState(0);
 	const [percentage, setPercentage] = React.useState(0);
-	const [duration, setDuration] = React.useState({});
 
 	const dispatch = useDispatch();
-	React.useEffect(() => {
-		dispatch(getQuestionsByAssessmentId(assessmentId));
-	}, []);
 
 	React.useEffect(() => {
-		if (assessmentQuestions.length) {
-			const { durations } = assessmentQuestions[0].assesment_id;
-			setQuestions([...assessmentQuestions.map((question) => ({ ...question, answer: '' }))]);
-			setDuration({ ...durations });
+		if (!isEmpty(assessment)) {
+			setQuestions([...assessment?.questions?.map((question) => ({ ...question, answer: '' }))]);
 		}
-	}, [assessmentQuestions]);
+	}, [assessment]);
 
 	React.useEffect(() => {
 		let percentage = calculatePercentageCompleted(activeQuestion, questions.length);
@@ -204,106 +189,98 @@ const Questions = ({ history, match: { params }, assessmentQuestions }) => {
 	};
 
 	return (
-		<Wrapper>
-			<small>academy/2021assesment/april</small>
-			{loadingQuestions ? (
-				<BlockLoader />
-			) : (
-				<>
-					<TimeRemain>
-						<div style={{ width: '90%', margin: 'auto' }}>
-							<h4>Time Remaining</h4>
-							<h2>
-								<Countdown date={Date.now() + convertDurationToMins(duration) * 60000} />
-							</h2>
-							<Direction>
-								<div className='left'>
-									<button
-										className='btn-left'
-										onClick={() => handleClick('back')}
-										disabled={activeQuestion === 0}
-									>
-										&#60;
-									</button>
-								</div>
-								<div className='right'>
-									<button
-										className='btn-right'
-										onClick={() => handleClick('next')}
-										disabled={
-											activeQuestion === questions.length - 1 ||
-											!Boolean(questions[activeQuestion]?.answer)
-										}
-									>
-										&#62;
-									</button>
-								</div>
-								<p></p>
-								<p>
-									{activeQuestion + 1}/{questions.length}
-								</p>
-							</Direction>
-							<Progress className='progress'>
-								<div className='bar' style={{ width: `${percentage}%` }}></div>
-							</Progress>
-							<p className='percent'>{percentage}% complete</p>
-						</div>
-					</TimeRemain>
-
-					<div>
-						<Question>
-							<div className='number'>{activeQuestion + 1}</div>
-							<p>{questions[activeQuestion]?.question}</p>
-						</Question>
-						<Answer>
-							{formatOptions(questions[activeQuestion])?.map((option) => (
-								<option
-									value={option?.value}
-									key={option?.value}
-									onClick={(e) => {
-										const { value } = e.target;
-										questions[activeQuestion].answer = value;
-										setQuestions([...questions]);
-									}}
-									className={classnames('', {
-										active: option?.value === questions[activeQuestion].answer,
-									})}
-								>
-									{option?.name}
-								</option>
-							))}
-						</Answer>
-
-						<Btn>
+		<>
+			<TimeRemain>
+				<div style={{ width: '90%', margin: 'auto' }}>
+					<Direction>
+						<div className='left'>
 							<button
-								disabled={!Boolean(questions[activeQuestion]?.answer) || loadingSubmit}
-								onClick={() => {
-									if (activeQuestion === questions.length - 1) {
-										dispatch(submitQuestions(assessmentId, questions)).then(() => {
-											history.push(`/app/assessment/result/${assessmentId}`);
-										});
-									} else {
-										handleClick('next');
-									}
-								}}
+								className='btn-left'
+								onClick={() => handleClick('back')}
+								disabled={activeQuestion === 0}
 							>
-								{loadingSubmit ? (
-									<ButtonLoader />
-								) : activeQuestion === questions.length - 1 ? (
-									'Submit'
-								) : (
-									'Continue'
-								)}
+								&#60;
 							</button>
-						</Btn>
-					</div>
-				</>
-			)}
-		</Wrapper>
+						</div>
+						<div className='right'>
+							<button
+								className='btn-right'
+								onClick={() => handleClick('next')}
+								disabled={
+									activeQuestion === questions.length - 1 ||
+									!Boolean(questions[activeQuestion]?.answer)
+								}
+							>
+								&#62;
+							</button>
+						</div>
+						<p></p>
+						<p>
+							{activeQuestion + 1}/{questions.length}
+						</p>
+					</Direction>
+					<Progress className='progress'>
+						<div className='bar' style={{ width: `${percentage}%` }}></div>
+					</Progress>
+					<p className='percent'>{percentage}% complete</p>
+				</div>
+			</TimeRemain>
+
+			<div>
+				<Question>
+					<div className='number'>{activeQuestion + 1}</div>
+					<p>{questions[activeQuestion]?.question}</p>
+				</Question>
+				<Answer>
+					{formatOptions(questions[activeQuestion])?.map((option, i) => (
+						<div className='a-i-c'>
+							<span className='mr-8'>{convertToChar(i + 65)}.</span>
+							<option
+								value={option?.value}
+								key={option?.value}
+								onClick={(e) => {
+									const { value } = e.target;
+									questions[activeQuestion].answer = value;
+									setQuestions([...questions]);
+								}}
+								className={classnames('', {
+									active: option?.value === questions[activeQuestion].answer,
+								})}
+							>
+								{option?.name}
+							</option>
+						</div>
+					))}
+				</Answer>
+
+				<Btn>
+					<button
+						disabled={!Boolean(questions[activeQuestion]?.answer) || loadingSubmit}
+						onClick={() => {
+							if (activeQuestion === questions.length - 1) {
+								dispatch(submitQuestions(assessmentId, questions)).then(() => {
+									history.push(`/app/assessment/result/${assessmentId}`);
+								});
+							} else {
+								handleClick('next');
+							}
+						}}
+					>
+						{loadingSubmit ? (
+							<ButtonLoader />
+						) : activeQuestion === questions.length - 1 ? (
+							'Submit'
+						) : (
+							'Continue'
+						)}
+					</button>
+				</Btn>
+			</div>
+		</>
 	);
-};
+});
 
 export default connect(
-	({ assessments: { questions: assessmentQuestions } }) => ({ assessmentQuestions }),
+	({ assessments: { questions: assessmentQuestions, assessment } }) => ({ assessmentQuestions, assessment }),
 	null,
 )(Questions);

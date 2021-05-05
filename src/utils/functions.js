@@ -28,6 +28,10 @@ export const clearMessage = () => (dispatch) => {
 	store.dispatch({ type: 'CLEAR_MESSAGES' });
 };
 
+export const convertToChar = (number) => {
+	return String.fromCharCode(number);
+};
+
 export const getQueryParam = () => {
 	// console.log(history);
 };

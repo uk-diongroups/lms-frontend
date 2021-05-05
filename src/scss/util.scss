@@ -1,3 +1,25 @@
+.d-flx,
+%flx-space {
+	display: flex;
+}
+.j-c-sb {
+	@extend %flx-space;
+	justify-content: space-between;
+}
+
+.a-i-c {
+	@extend %flx-space;
+	align-items: center;
+}
+
+.mr-8 {
+	margin-right: 0.5rem;
+}
+
+.mr-16 {
+	margin-right: 1rem;
+}
+
 .mt-50 {
 	margin-top: 50px !important;
 }
@@ -13,4 +35,3 @@
 .mb-70 {
 	margin-bottom: 70px !important;
 }
-
