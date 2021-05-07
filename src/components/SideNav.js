@@ -8,14 +8,14 @@ import { useDispatch } from 'react-redux';
 
 const sideMenus = [
 	{
-		menuName: 'Home',
-		iconName: 'home',
-		path: '/app/home',
-	},
-	{
 		menuName: 'Dashboard',
 		iconName: 'dashboard',
 		path: '/app/dashboard/',
+	},
+	{
+		menuName: 'Academy',
+		iconName: 'home',
+		path: '/app/academy',
 	},
 	{
 		menuName: 'My Courses',

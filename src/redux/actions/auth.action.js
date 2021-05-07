@@ -44,10 +44,9 @@ export const login = (userData) => async (dispatch) => {
 		localStorage.setItem('_token', token);
 		localStorage.setItem('ukdion_employee', JSON.stringify(employee));
 		dispatch(setCurrentUser(employee));
-		endLoading('login');
-		return Promise.resolve();
 	} catch (err) {
-		errorHandler(err);
+		endLoading('login');
+		return Promise.reject(errorHandler(err));
 	}
 	endLoading('login');
 };

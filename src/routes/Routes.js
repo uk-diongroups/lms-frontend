@@ -16,7 +16,7 @@ const Register = lazy(() => import('../pages/auth/signup/SignUp'));
 // const VerifyEmail = lazy(() => import('../pages/auth/VerifyEmail'));
 // const ResetPassword = lazy(() => import('../pages/auth/ResetPassword'));
 
-const Home = lazy(() => import('../pages/app/home/Home'));
+const Academy = lazy(() => import('../pages/app/home/Academy'));
 const Dashboard = lazy(() => import('../pages/app/dashboard/Dashboard'));
 const Courses = lazy(() => import('../pages/app/courses/Courses'));
 const CourseDetails = lazy(() => import('../pages/app/courses/CourseDetails'));
@@ -40,7 +40,7 @@ const Routes = () => (
 				<AuthRoute exact path='/reset-password' component={ResetPassword} layout={AuthLayout} />
 				<AuthRoute exact path='/verify' component={VerifyEmail} layout={AuthLayout} /> */}
 
-					<PrivateRoute exact path='/app/home' component={Home} layout={DashboardLayout} />
+					<PrivateRoute exact path='/app/academy' component={Academy} layout={DashboardLayout} />
 					<PrivateRoute exact path='/app/dashboard' component={Dashboard} layout={DashboardLayout} />
 					<PrivateRoute exact path='/app/courses' component={Courses} layout={DashboardLayout} />
 					{/* <PrivateRoute exact path='/app/courses/details' component={CourseEnrolled} layout={DashboardLayout} /> */}
