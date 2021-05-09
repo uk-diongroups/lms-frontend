@@ -1,9 +1,6 @@
 import React from 'react';
 import Loader from 'react-loader-spinner';
 import styled from 'styled-components';
-import { isLoading } from 'utils/loading';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
 const PageLoaderBlock = styled.div`
 	height: 100vh;
@@ -21,10 +18,29 @@ const PageLoaderBlock = styled.div`
 `;
 
 const BlockWrapper = styled.div`
-	justify-content: center !important;
 	display: flex;
 	margin-top: 50px;
 	margin-bottom: 50px;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+`;
+const OverlayWrapper = styled.div`
+	position: fixed;
+	height: 100vh;
+	width: 100vw;
+	background: rgba(255, 255, 255, 0.6);
+	border: 1px solid red;
+	top: 0;
+	left: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	p {
+		margin-top: 50px;
+		text-align: center;
+		font-size: 20px;
+	}
 `;
 
 // const PageLoaderBlock = styled.div`
@@ -55,24 +71,23 @@ export const PageLoader = () => (
 );
 
 export const OverlayLoader = ({ text }) => (
-	<div id='lottie' class='uk-open uk-modal' data-uk-modal>
-		<div class='uk-modal-dialog uk-modal-body uk-margin-auto-vertical lottie-modal is-transparent'>
-			<div>
-				<div class='lds-ring'>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-				</div>
-				<p>{text}</p>
-			</div>
+	<OverlayWrapper>
+		<div>
+			<Loader type='TailSpin' color='#0ba759' width='100' height='100' />
+			<p>{text}</p>
 		</div>
-	</div>
+	</OverlayWrapper>
 );
 
-export const BlockLoader = ({ marginTop, marginBottom }) => (
-	<BlockWrapper>
-		<Loader type='TailSpin' color='#201A56' width='46' height='46' />
+export const BlockLoader = ({ marginTop, marginBottom, height }) => (
+	<BlockWrapper
+		style={{
+			marginTop: marginTop || '40px',
+			marginBottom: marginBottom || '40px',
+			height: height || '60vh',
+		}}
+	>
+		<Loader type='TailSpin' color='#0ba759' width='46' height='46' />
 	</BlockWrapper>
 );
 

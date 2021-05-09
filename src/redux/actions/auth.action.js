@@ -6,6 +6,10 @@ import { loading, endLoading } from 'redux/loader.dispatcher';
 import { errorHandler } from 'utils/errors';
 import request from 'config/baseUrl';
 
+export const setCurrentUser = (user) => (dispatch) => {
+	dispatch({ type: t.SET_USER, payload: user });
+};
+
 export const register = (userData) => async (dispatch) => {
 	loading('register');
 	try {
@@ -13,7 +17,7 @@ export const register = (userData) => async (dispatch) => {
 			data: {
 				data: { merchant, token },
 			},
-		} = await axios.post(`${URL}/auth/signup`, userData);
+		} = await axios.post(`${URL}/auth/register`, userData);
 
 		localStorage.setItem('merchant', JSON.stringify(merchant));
 		localStorage.setItem('merchant_token', token);
@@ -23,13 +27,43 @@ export const register = (userData) => async (dispatch) => {
 			payload: 'Sign up was successful.',
 		});
 	} catch (err) {
-		errorHandler(err);
+		return Promise.reject(errorHandler(err));
 	}
 	endLoading('register');
 };
 
-export const setCurrentUser = (user) => (dispatch) => {
-	dispatch({ type: t.SET_USER, payload: user });
+export const fetchDepartments = (value) => async (dispatch) => {
+	loading('fetchDepartments');
+	try {
+		const {
+			data: { data },
+		} = await axios.get(`${URL}/users/all/departments`, value);
+
+		dispatch({
+			type: t.GET_DEPARTMENTS,
+			payload: data,
+		});
+	} catch (err) {
+		errorHandler(err);
+	}
+	endLoading('fetchDepartments');
+};
+
+export const fetchBranches = (value) => async (dispatch) => {
+	loading('fetchBranches');
+	try {
+		const {
+			data: { data },
+		} = await axios.get(`${URL}/users/all/branches`, value);
+
+		dispatch({
+			type: t.GET_BRANCHES,
+			payload: data,
+		});
+	} catch (err) {
+		errorHandler(err);
+	}
+	endLoading('fetchBranches');
 };
 
 export const login = (userData) => async (dispatch) => {

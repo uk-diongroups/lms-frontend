@@ -1,19 +1,17 @@
-import { BlockLoader, ButtonLoader } from 'components/Loaders';
-import useAssessment from 'hooks/assessment';
-import React from 'react';
-import { useDispatch, useSelector, connect } from 'react-redux';
-import { getAssessment, submitQuestions } from 'redux/actions/assessment.action';
-import styled from 'styled-components';
-import { getLoadingState } from 'utils/functions';
+import { BlockLoader } from 'components/Loaders';
 import { isEmpty } from 'lodash';
+import React from 'react';
+import { connect, useSelector } from 'react-redux';
+import { getAssessment } from 'redux/actions/assessment.action';
+import { getLoadingState } from 'utils/functions';
 import Duration from './Duration';
 import Questions from './Questions';
 
-const Wrapper = styled.div`
-	padding-top: 20px;
-	padding-left: 25px;
-	padding-right: 33px;
-`;
+// const Wrapper = styled.div`
+// 	padding-top: 20px;
+// 	padding-left: 25px;
+// 	padding-right: 33px;
+// `;
 
 const AssessmnetQuestion = ({ history, match: { params }, assessmentQuestions, assessment }) => {
 	const { assessmentId } = params;
@@ -21,8 +19,9 @@ const AssessmnetQuestion = ({ history, match: { params }, assessmentQuestions, a
 	const loadingAssessment = useSelector(getLoadingState('getAssessment'));
 
 	const [duration, setDuration] = React.useState({});
+	const [finishModal, setFinishModal] = React.useState({});
 
-	const dispatch = useDispatch();
+	x;
 	React.useEffect(() => {
 		dispatch(getAssessment(assessmentId));
 	}, []);
@@ -36,20 +35,18 @@ const AssessmnetQuestion = ({ history, match: { params }, assessmentQuestions, a
 		}
 	}, [assessment]);
 
-	const submtQuestiononTimeCompleted = () => {};
-
 	return (
-		<Wrapper>
-			<small>academy/2021assesment/april</small>
+		<div className='container container--lg'>
+			{/* <small>academy/2021assesment/april</small> */}
 			{loadingAssessment ? (
 				<BlockLoader />
 			) : (
 				<div className='questions__block'>
-					<Duration duration={duration} />
-					<Questions assessmentId={assessmentId} />
+					<Duration duration={duration} setFinishModal={setFinishModal} />
+					<Questions assessmentId={assessmentId} finishModal={finishModal} />
 				</div>
 			)}
-		</Wrapper>
+		</div>
 	);
 };
 

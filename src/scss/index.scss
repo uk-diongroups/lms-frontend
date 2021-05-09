@@ -8,10 +8,14 @@
 @import './toast.scss';
 
 @import './components/sidenav';
+@import './components/button';
+@import './components/nav';
 
 /* MODULES */
+@import './modules/auth';
 @import './modules/assessment';
 @import './modules/questions';
+
 // @import './custom.scss';
 // @import './calendar.scss';
 // @import './not-found.scss';

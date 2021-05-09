@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import resource from 'assets/img/resource1.png';
+// import resource from 'assets/img/resource1.png';
 import { withRouter } from 'react-router';
 
 const Wrapper = styled.div`

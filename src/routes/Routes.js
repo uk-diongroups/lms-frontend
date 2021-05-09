@@ -11,7 +11,7 @@ import AuthRoute from './AuthRoute';
 import PrivateRoute from './PrivateRoute';
 
 const Login = lazy(() => import('../pages/auth/Login'));
-const Register = lazy(() => import('../pages/auth/signup/SignUp'));
+const Register = lazy(() => import('../pages/auth/Register'));
 // const ForgotPassword = lazy(() => import('../pages/auth/ForgotPassword'));
 // const VerifyEmail = lazy(() => import('../pages/auth/VerifyEmail'));
 // const ResetPassword = lazy(() => import('../pages/auth/ResetPassword'));
@@ -35,7 +35,7 @@ const Routes = () => (
 
 					{/* Patient Routes */}
 					<AuthRoute exact path='/auth/login' component={Login} layout={AuthLayout} />
-					<AuthRoute exact path='/auth/register' component={Register} layout={RegisterLayout} />
+					<AuthRoute exact path='/auth/register' component={Register} layout={AuthLayout} />
 					{/* <AuthRoute exact path='/forgot-password' component={ForgotPassword} layout={AuthLayout} />
 				<AuthRoute exact path='/reset-password' component={ResetPassword} layout={AuthLayout} />
 				<AuthRoute exact path='/verify' component={VerifyEmail} layout={AuthLayout} /> */}

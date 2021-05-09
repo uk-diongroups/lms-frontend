@@ -1,13 +1,5 @@
 import homebg from 'assets/img/homebg.svg';
 import homefooter from 'assets/img/homefooter.png';
-import resource1 from 'assets/img/resource1.png';
-import resource2 from 'assets/img/resource2.png';
-import resource3 from 'assets/img/resource3.png';
-import resource4 from 'assets/img/resource4.png';
-import resource5 from 'assets/img/resource5.png';
-import resource6 from 'assets/img/resource6.png';
-import resource7 from 'assets/img/resource7.png';
-import resource8 from 'assets/img/resource8.png';
 import InputField from 'components/form/Input';
 import { BlockLoader } from 'components/Loaders';
 import { Button, Grid, GridEqual, H2 } from 'components/Styles';
@@ -119,51 +111,51 @@ const Academy = ({ courses }) => {
 		// slidesToScroll: 2,
 	};
 
-	const resources = [
-		{
-			img: resource1,
-			title: 'Advanced Neurobiology',
-			author: 'ProfessorYan Zhang',
-		},
-		{
-			img: resource2,
-			title: 'Advanced Neurobiology',
-			author: 'ProfessorYan Zhang',
-		},
-		{
-			img: resource3,
-			title: 'Advanced Neurobiology',
-			author: 'ProfessorYan Zhang',
-		},
-		{
-			img: resource4,
-			title: 'Advanced Neurobiology',
-			author: 'ProfessorYan Zhang',
-		},
-	];
+	// const resources = [
+	// 	{
+	// 		img: resource1,
+	// 		title: 'Advanced Neurobiology',
+	// 		author: 'ProfessorYan Zhang',
+	// 	},
+	// 	{
+	// 		img: resource2,
+	// 		title: 'Advanced Neurobiology',
+	// 		author: 'ProfessorYan Zhang',
+	// 	},
+	// 	{
+	// 		img: resource3,
+	// 		title: 'Advanced Neurobiology',
+	// 		author: 'ProfessorYan Zhang',
+	// 	},
+	// 	{
+	// 		img: resource4,
+	// 		title: 'Advanced Neurobiology',
+	// 		author: 'ProfessorYan Zhang',
+	// 	},
+	// ];
 
-	const otherResources = [
-		{
-			img: resource5,
-			title: 'Advanced Neurobiology',
-			author: 'ProfessorYan Zhang',
-		},
-		{
-			img: resource6,
-			title: 'Advanced Neurobiology',
-			author: 'ProfessorYan Zhang',
-		},
-		{
-			img: resource7,
-			title: 'Advanced Neurobiology',
-			author: 'ProfessorYan Zhang',
-		},
-		{
-			img: resource8,
-			title: 'Advanced Neurobiology',
-			author: 'ProfessorYan Zhang',
-		},
-	];
+	// const otherResources = [
+	// 	{
+	// 		img: resource5,
+	// 		title: 'Advanced Neurobiology',
+	// 		author: 'ProfessorYan Zhang',
+	// 	},
+	// 	{
+	// 		img: resource6,
+	// 		title: 'Advanced Neurobiology',
+	// 		author: 'ProfessorYan Zhang',
+	// 	},
+	// 	{
+	// 		img: resource7,
+	// 		title: 'Advanced Neurobiology',
+	// 		author: 'ProfessorYan Zhang',
+	// 	},
+	// 	{
+	// 		img: resource8,
+	// 		title: 'Advanced Neurobiology',
+	// 		author: 'ProfessorYan Zhang',
+	// 	},
+	// ];
 
 	return (
 		<Wrapper>

@@ -9,7 +9,7 @@ const PrivateRoute = ({ user, isAuthenticated, layout: Layout, component: Compon
 		<Route
 			{...rest}
 			render={(props) => {
-				// if (isAuthenticated) {
+				if (isAuthenticated) {
 					return (
 						<ErrorBoundary>
 							<Layout>
@@ -18,9 +18,9 @@ const PrivateRoute = ({ user, isAuthenticated, layout: Layout, component: Compon
 							{/* <Toast /> */}
 						</ErrorBoundary>
 					);
-				// } else {
-				// 	return <Redirect to='/auth/login' />;
-				// }
+				} else {
+					return <Redirect to='/auth/login' />;
+				}
 			}}
 		/>
 	);
