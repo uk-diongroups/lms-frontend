@@ -1,7 +1,7 @@
 import { BlockLoader } from 'components/Loaders';
 import { isEmpty } from 'lodash';
 import React from 'react';
-import { connect, useSelector } from 'react-redux';
+import { connect, useDispatch, useSelector } from 'react-redux';
 import { getAssessment } from 'redux/actions/assessment.action';
 import { getLoadingState } from 'utils/functions';
 import Duration from './Duration';
@@ -16,12 +16,13 @@ import Questions from './Questions';
 const AssessmnetQuestion = ({ history, match: { params }, assessmentQuestions, assessment }) => {
 	const { assessmentId } = params;
 
+	const dispatch = useDispatch();
+
 	const loadingAssessment = useSelector(getLoadingState('getAssessment'));
 
 	const [duration, setDuration] = React.useState({});
-	const [finishModal, setFinishModal] = React.useState({});
+	const [finishModal, setFinishModal] = React.useState(false);
 
-	x;
 	React.useEffect(() => {
 		dispatch(getAssessment(assessmentId));
 	}, []);
