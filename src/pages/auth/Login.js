@@ -65,7 +65,7 @@ export default ({ history, match }) => {
 		validationSchema: loginSchema,
 		onSubmit(values) {
 			dispatch(login(values)).then(() => {
-				history.push('/app/home');
+				history.push('/app/dashboard');
 			});
 		},
 	});
