@@ -17,6 +17,7 @@ const Register = lazy(() => import('../pages/auth/Register'));
 // const ResetPassword = lazy(() => import('../pages/auth/ResetPassword'));
 
 const Academy = lazy(() => import('../pages/app/home/Academy'));
+const History = lazy(() => import('../pages/app/history/History'));
 const Dashboard = lazy(() => import('../pages/app/dashboard/Dashboard'));
 const Courses = lazy(() => import('../pages/app/courses/Courses'));
 const CourseDetails = lazy(() => import('../pages/app/courses/CourseDetails'));
@@ -43,6 +44,7 @@ const Routes = () => (
 					<PrivateRoute exact path='/app/academy' component={Academy} layout={DashboardLayout} />
 					<PrivateRoute exact path='/app/dashboard' component={Dashboard} layout={DashboardLayout} />
 					<PrivateRoute exact path='/app/courses' component={Courses} layout={DashboardLayout} />
+					<PrivateRoute exact path='/app/history' component={History} layout={DashboardLayout} />
 					{/* <PrivateRoute exact path='/app/courses/details' component={CourseEnrolled} layout={DashboardLayout} /> */}
 					<PrivateRoute
 						exact
