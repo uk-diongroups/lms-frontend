@@ -5,11 +5,13 @@ export const signUpSchema = yup.object({
 	first_name: yup.string().required('Firstname is required'),
 	last_name: yup.string().required('Lastname is required'),
 	email: yup.string().email('Must be a valid email').required('Email is required'),
+	branch: yup.string().required('Branch is required'),
+	department: yup.string().required('Department is required'),
 	password: yup.string().required('Password is required'),
-	termsOfService: yup
-		.boolean()
-		.required('The terms and conditions must be accepted.')
-		.oneOf([true], 'The terms and conditions must be accepted.'),
+	confirmPassword: yup
+		.string()
+		.oneOf([yup.ref('password')], 'Passwords must match')
+		.required('Confirm Password is required'),
 });
 
 export const loginSchema = yup.object({

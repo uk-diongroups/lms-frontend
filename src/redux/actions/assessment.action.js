@@ -12,7 +12,6 @@ export const getAssessments = () => async (dispatch) => {
 
 		// let assessments = data.splice(data.length - 10, 10);
 
-		console.log(data);
 		dispatch({
 			type: t.GET_ASSESSMENTS,
 			payload: { assessments: data },

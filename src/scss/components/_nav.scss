@@ -1,0 +1,21 @@
+.nav {
+	display: flex;
+	margin-bottom: 15px;
+	&__list {
+		color: #242582;
+		font-size: 1rem;
+		padding-bottom: 5px;
+		cursor: pointer;
+		margin-right: 15px;
+		color: #000000;
+		font-weight: bold;
+
+		&.active {
+			color: #242582;
+			border-bottom: 2px solid #23286b;
+		}
+		&:not(.active) {
+			opacity: 0.3;
+		}
+	}
+}

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import logo from 'assets/img/logo.svg';
 import authbg from 'assets/img/authbg.png';
 const PageWrapper = styled.div`
-	min-height: 100vh;
+	height: 100vh;
 	display: grid;
 	grid-template-columns: 50% 50%;
 	align-items: center;
@@ -28,10 +28,10 @@ const AuthBanner = styled.div`
 
 const AuthLayout = ({ children }) => {
 	return (
-		<PageWrapper>
-			<AuthBanner></AuthBanner>
-			<div>{children}</div>
-		</PageWrapper>
+		<div className='auth'>
+			<div className='auth__banner'></div>
+			<div className='auth__children'>{children}</div>
+		</div>
 	);
 };
 
