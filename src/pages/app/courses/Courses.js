@@ -11,7 +11,7 @@ import { getLoadingState } from 'utils/functions';
 import Course from 'components/Course';
 import { BlockLoader } from 'components/Loaders';
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
 	padding: 56px;
 
 	section {
@@ -20,7 +20,8 @@ const Wrapper = styled.div`
 	}
 `;
 
-const Courses = ({ courses }) => {
+const Courses = ({  }) => {
+	let courses = []
 	const dispatch = useDispatch();
 
 	React.useEffect(() => {
