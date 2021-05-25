@@ -23,10 +23,7 @@ const Courses = lazy(() => import('../pages/app/courses/Courses'));
 const CourseDetails = lazy(() => import('../pages/app/courses/CourseDetails'));
 const Assessment = lazy(() => import('../pages/app/assessment/Assessment'));
 const Result = lazy(() => import('../pages/app/assessment/Result'));
-const CourseStart = lazy (() => import('../pages/app/courses/CourseStart'));
 const AssessmnetQuestion = lazy(() => import('../pages/app/assessment/AssessmnetQuestion'));
-
-const CourseEnrolled = lazy(() => import('../pages/app/courses/CourseEnrolled'));
 
 const Routes = () => (
 	<>
@@ -44,15 +41,11 @@ const Routes = () => (
 
 					<PrivateRoute exact path='/app/academy' component={Academy} layout={DashboardLayout} />
 					<PrivateRoute exact path='/app/dashboard' component={Dashboard} layout={DashboardLayout} />
+
 					<PrivateRoute exact path='/app/courses' component={Courses} layout={DashboardLayout} />
+					<PrivateRoute exact path='/app/courses/:id' component={CourseDetails} layout={DashboardLayout} />
 					<PrivateRoute exact path='/app/history' component={History} layout={DashboardLayout} />
-					{/* <PrivateRoute exact path='/app/courses/details' component={CourseEnrolled} layout={DashboardLayout} /> */}
-					<PrivateRoute
-						exact
-						path='/app/courses/details'
-						component={CourseDetails}
-						layout={DashboardLayout}
-					/>
+					
 					<PrivateRoute exact path='/app/assessments' component={Assessment} layout={DashboardLayout} />
 					<PrivateRoute
 						exact
@@ -64,12 +57,6 @@ const Routes = () => (
 						exact
 						path='/app/assessment/questions/:assessmentId'
 						component={AssessmnetQuestion}
-						layout={DashboardLayout}
-					/>
-					<PrivateRoute
-						exact
-						path='/app/course_start'
-						component={CourseStart}
 						layout={DashboardLayout}
 					/>
 

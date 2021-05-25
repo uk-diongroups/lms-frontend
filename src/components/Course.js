@@ -123,8 +123,8 @@ export default ({ course }) => {
 				/>
 			</Percentage>
 
-			<Link to={`/app/courses/details/${course?.id}`}>
-				<Button>Start course</Button>
+			<Link to={`/app/courses/${course?.id}`}>
+				<Button>View course</Button>
 			</Link>
 		</Wrapper>
 	);

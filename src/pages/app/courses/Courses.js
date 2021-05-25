@@ -1,15 +1,11 @@
-import analog from 'assets/img/analog.svg';
-import drawing from 'assets/img/drawing.svg';
-import figma from 'assets/img/figma.svg';
-import instagram from 'assets/img/instagram.svg';
+import Course from 'components/Course';
+import { BlockLoader } from 'components/Loaders';
 import { DashboardNav } from 'components/Styles';
 import React from 'react';
-import { useDispatch, useSelector, connect } from 'react-redux';
+import { connect, useDispatch, useSelector } from 'react-redux';
 import { getCourses } from 'redux/actions/courses.action';
 import styled from 'styled-components';
 import { getLoadingState } from 'utils/functions';
-import Course from 'components/Course';
-import { BlockLoader } from 'components/Loaders';
 
 export const Wrapper = styled.div`
 	padding: 56px;
@@ -20,8 +16,7 @@ export const Wrapper = styled.div`
 	}
 `;
 
-const Courses = ({  }) => {
-	let courses = []
+const Courses = ({ courses }) => {
 	const dispatch = useDispatch();
 
 	React.useEffect(() => {

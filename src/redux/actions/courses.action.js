@@ -15,7 +15,7 @@ export const getCourses = (userData) => async (dispatch) => {
 
 		dispatch({
 			type: t.GET_COURSES,
-			payload: { courses: data },
+			payload: { courses: data.docs, totalCourses: data.totalDocs },
 		});
 
 		endLoading('getCourses');
@@ -32,6 +32,8 @@ export const getCourse = (id) => async (dispatch) => {
 		const {
 			data: { data },
 		} = await request.get(`/course/${id}`);
+
+		console.log({ data });
 
 		dispatch({
 			type: t.GET_COURSE,

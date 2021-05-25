@@ -21,7 +21,7 @@ const AuthRoute = ({ component: Component, layout: Layout, location, isAuthentic
 						</ErrorBoundary>
 					);
 				} else {
-					return <Redirect to='/app/home' />;
+					return <Redirect to='/app/dashboard' />;
 				}
 			}}
 		/>

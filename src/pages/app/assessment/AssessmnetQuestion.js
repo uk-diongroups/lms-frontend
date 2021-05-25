@@ -7,12 +7,6 @@ import { getLoadingState } from 'utils/functions';
 import Duration from './Duration';
 import Questions from './Questions';
 
-// const Wrapper = styled.div`
-// 	padding-top: 20px;
-// 	padding-left: 25px;
-// 	padding-right: 33px;
-// `;
-
 const AssessmnetQuestion = ({ history, match: { params }, assessmentQuestions, assessment }) => {
 	const { assessmentId } = params;
 

@@ -3,6 +3,7 @@ import { isEmpty } from 'lodash';
 
 const initialState = {
 	courses: [],
+	totalCourses: 0,
 	course: {},
 };
 
@@ -12,6 +13,7 @@ const auth = (state = initialState, { type, payload }) => {
 			return {
 				...state,
 				courses: payload.courses,
+				totalCourses: payload.totalCourses,
 			};
 		case t.GET_COURSE:
 			return {
