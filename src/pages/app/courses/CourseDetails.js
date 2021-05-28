@@ -94,7 +94,7 @@ const CourseDetail = ({ match, course }) => {
 							<img src={Start} alt='' />
 							<div className='agile_management'>
 								<div>
-									<h4>AGILE MANAGEMENT</h4>
+									<h4>{course?.title}</h4>
 									<small>by Gloria Abdul</small>
 								</div>
 								<div className='d-flex justify-content-between btn_start'>

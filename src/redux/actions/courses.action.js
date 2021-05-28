@@ -1,12 +1,9 @@
-import * as t from 'redux/types/courses.type';
-import * as message from 'redux/types/message.type';
-import { URL } from 'config/url';
-import axios from 'axios';
-import { loading, endLoading } from 'redux/loader.dispatcher';
-import { errorHandler } from 'utils/errors';
 import request from 'config/baseUrl';
+import { endLoading, loading } from 'redux/loader.dispatcher';
+import * as t from 'redux/types/courses.type';
+import { errorHandler } from 'utils/errors';
 
-export const getCourses = (userData) => async (dispatch) => {
+export const getCourses = () => async (dispatch) => {
 	loading('getCourses');
 	try {
 		const {
@@ -37,7 +34,7 @@ export const getCourse = (id) => async (dispatch) => {
 
 		dispatch({
 			type: t.GET_COURSE,
-			payload: data,
+			payload: data[0],
 		});
 
 		endLoading('getCourse');
