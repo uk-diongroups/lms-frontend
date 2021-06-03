@@ -1,6 +1,6 @@
 import React from 'react';
 import generateID from 'uuid/v4';
-import logo from 'assets/img/logo.png';
+import logo from 'assets/img/logo.svg';
 import { NavLink, withRouter } from 'react-router-dom';
 import icons from 'assets/icons/icon-collections.svg';
 import { logoutUser } from 'redux/actions/auth.action';
@@ -14,7 +14,7 @@ const sideMenus = [
 	},
 	{
 		menuName: 'Academy',
-		iconName: 'home',
+		iconName: 'academy',
 		path: '/app/academy',
 	},
 	{
@@ -29,8 +29,8 @@ const sideMenus = [
 	},
 
 	{
-		menuName: 'Settings',
-		iconName: 'settings',
+		menuName: 'Account',
+		iconName: 'account',
 		path: '/app/settings',
 	},
 	{

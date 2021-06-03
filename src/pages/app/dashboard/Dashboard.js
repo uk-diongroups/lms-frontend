@@ -82,7 +82,7 @@ const Graph = styled.div`
 `;
 
 export const CurrentlyLearning = styled.div`
-	h3{
+	h3 {
 		font-weight: 500;
 		font-size: 24px;
 		line-height: 33px;
@@ -92,27 +92,27 @@ export const CurrentlyLearning = styled.div`
 	}
 
 	& .learning_img {
-		img{
+		img {
 			width: 100%;
 			border-radius: 10px 10px 0px 0px;
-			height: 190px;	
+			height: 190px;
 		}
 	}
 
-	& .extra_details{
-		border: 3px solid #F6F7F8;
-    	padding: 8px;
-		h4{
+	& .extra_details {
+		border: 3px solid #f6f7f8;
+		padding: 8px;
+		h4 {
 			font-weight: 600;
 		}
-		small{
-			color: #6A7588;
+		small {
+			color: #6a7588;
 			font-weight: normal;
 			font-size: 12px;
 			line-height: 18px;
-			letter-spacing: 0.5px;			
+			letter-spacing: 0.5px;
 		}
-		button{
+		button {
 			justify-content: center;
 			align-items: center;
 			padding: 16px 31px;
@@ -120,14 +120,14 @@ export const CurrentlyLearning = styled.div`
 			left: 0px;
 			right: 58px;
 			top: 99px;
-			background: #0BA759;
+			background: #0ba759;
 			border-radius: 8px;
 			border: none;
 			color: white;
 			font-size: 16px;
 		}
 	}
-`
+`;
 
 const courses = [
 	{
@@ -180,7 +180,7 @@ const Dashboard = () => {
 						</div>
 
 						<div>
-							<img src={icons} style={{width: '100%',height: 'fit-content',left:'25%'}}/> 
+							<img src={icons} style={{ width: '100%', height: 'fit-content', left: '25%' }} />
 						</div>
 
 						{/* <svg>
@@ -242,11 +242,14 @@ const Dashboard = () => {
 				<CurrentlyLearning>
 					<h3>CURRENTLY LEARNING</h3>
 					<GridEqual count={4} gap={'30px'}>
-						<div className="learning_progress">
-							<div className="learning_img">
-								<img src="https://images.unsplash.com/photo-1615385639736-362b69696227?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zmxvd2VyJTIwYm91cXVldHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt=""/>
+						<div className='learning_progress'>
+							<div className='learning_img'>
+								<img
+									src='https://images.unsplash.com/photo-1615385639736-362b69696227?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zmxvd2VyJTIwYm91cXVldHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60'
+									alt=''
+								/>
 							</div>
-							<div className="extra_details">
+							<div className='extra_details'>
 								<h4>Advanced Neurobiology</h4>
 								<small>ProfessorYan Zhang</small>
 								<br />
@@ -254,15 +257,18 @@ const Dashboard = () => {
 								<small>1hr 20m of 2hr 45m</small>
 								<br />
 								<br />
-								<button className="btn-primary">Resume</button>
+								<button className='btn-primary'>Resume</button>
 							</div>
 						</div>
 
-						<div className="learning_progress">
-							<div className="learning_img">
-								<img src="https://images.unsplash.com/photo-1615385639736-362b69696227?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zmxvd2VyJTIwYm91cXVldHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt=""/>
+						<div className='learning_progress'>
+							<div className='learning_img'>
+								<img
+									src='https://images.unsplash.com/photo-1615385639736-362b69696227?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zmxvd2VyJTIwYm91cXVldHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60'
+									alt=''
+								/>
 							</div>
-							<div className="extra_details">
+							<div className='extra_details'>
 								<h4>Advanced Neurobiology</h4>
 								<small>ProfessorYan Zhang</small>
 								<br />
@@ -270,15 +276,18 @@ const Dashboard = () => {
 								<small>1hr 20m of 2hr 45m</small>
 								<br />
 								<br />
-								<button className="btn-primary">Resume</button>
+								<button className='btn-primary'>Resume</button>
 							</div>
 						</div>
 
-						<div className="learning_progress">
-							<div className="learning_img">
-								<img src="https://images.unsplash.com/photo-1615385639736-362b69696227?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zmxvd2VyJTIwYm91cXVldHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt=""/>
+						<div className='learning_progress'>
+							<div className='learning_img'>
+								<img
+									src='https://images.unsplash.com/photo-1615385639736-362b69696227?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zmxvd2VyJTIwYm91cXVldHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60'
+									alt=''
+								/>
 							</div>
-							<div className="extra_details">
+							<div className='extra_details'>
 								<h4>Advanced Neurobiology</h4>
 								<small>ProfessorYan Zhang</small>
 								<br />
@@ -286,15 +295,18 @@ const Dashboard = () => {
 								<small>1hr 20m of 2hr 45m</small>
 								<br />
 								<br />
-								<button className="btn-primary">Resume</button>
+								<button className='btn-primary'>Resume</button>
 							</div>
 						</div>
 
-						<div className="learning_progress">
-							<div className="learning_img">
-								<img src="https://images.unsplash.com/photo-1615385639736-362b69696227?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zmxvd2VyJTIwYm91cXVldHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt=""/>
+						<div className='learning_progress'>
+							<div className='learning_img'>
+								<img
+									src='https://images.unsplash.com/photo-1615385639736-362b69696227?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zmxvd2VyJTIwYm91cXVldHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60'
+									alt=''
+								/>
 							</div>
-							<div className="extra_details">
+							<div className='extra_details'>
 								<h4>Advanced Neurobiology</h4>
 								<small>ProfessorYan Zhang</small>
 								<br />
@@ -302,7 +314,7 @@ const Dashboard = () => {
 								<small>1hr 20m of 2hr 45m</small>
 								<br />
 								<br />
-								<button className="btn-primary">Resume</button>
+								<button className='btn-primary'>Resume</button>
 							</div>
 						</div>
 					</GridEqual>
@@ -311,11 +323,14 @@ const Dashboard = () => {
 				<CurrentlyLearning>
 					<h3>RECOMMENDED FOR YOU</h3>
 					<GridEqual count={4} gap={'30px'}>
-						<div className="learning_progress">
-							<div className="learning_img">
-								<img src="https://images.unsplash.com/photo-1615385639736-362b69696227?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zmxvd2VyJTIwYm91cXVldHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt=""/>
+						<div className='learning_progress'>
+							<div className='learning_img'>
+								<img
+									src='https://images.unsplash.com/photo-1615385639736-362b69696227?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zmxvd2VyJTIwYm91cXVldHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60'
+									alt=''
+								/>
 							</div>
-							<div className="extra_details">
+							<div className='extra_details'>
 								<h4>Advanced Neurobiology</h4>
 								<small>ProfessorYan Zhang</small>
 								<br />
@@ -323,15 +338,18 @@ const Dashboard = () => {
 								<small>1hr 20m of 2hr 45m</small>
 								<br />
 								<br />
-								<button className="btn-primary">Resume</button>
+								<button className='btn-primary'>Resume</button>
 							</div>
 						</div>
 
-						<div className="learning_progress">
-							<div className="learning_img">
-								<img src="https://images.unsplash.com/photo-1615385639736-362b69696227?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zmxvd2VyJTIwYm91cXVldHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt=""/>
+						<div className='learning_progress'>
+							<div className='learning_img'>
+								<img
+									src='https://images.unsplash.com/photo-1615385639736-362b69696227?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zmxvd2VyJTIwYm91cXVldHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60'
+									alt=''
+								/>
 							</div>
-							<div className="extra_details">
+							<div className='extra_details'>
 								<h4>Advanced Neurobiology</h4>
 								<small>ProfessorYan Zhang</small>
 								<br />
@@ -339,15 +357,18 @@ const Dashboard = () => {
 								<small>1hr 20m of 2hr 45m</small>
 								<br />
 								<br />
-								<button className="btn-primary">Resume</button>
+								<button className='btn-primary'>Resume</button>
 							</div>
 						</div>
 
-						<div className="learning_progress">
-							<div className="learning_img">
-								<img src="https://images.unsplash.com/photo-1615385639736-362b69696227?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zmxvd2VyJTIwYm91cXVldHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt=""/>
+						<div className='learning_progress'>
+							<div className='learning_img'>
+								<img
+									src='https://images.unsplash.com/photo-1615385639736-362b69696227?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zmxvd2VyJTIwYm91cXVldHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60'
+									alt=''
+								/>
 							</div>
-							<div className="extra_details">
+							<div className='extra_details'>
 								<h4>Advanced Neurobiology</h4>
 								<small>ProfessorYan Zhang</small>
 								<br />
@@ -355,15 +376,18 @@ const Dashboard = () => {
 								<small>1hr 20m of 2hr 45m</small>
 								<br />
 								<br />
-								<button className="btn-primary">Resume</button>
+								<button className='btn-primary'>Resume</button>
 							</div>
 						</div>
 
-						<div className="learning_progress">
-							<div className="learning_img">
-								<img src="https://images.unsplash.com/photo-1615385639736-362b69696227?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zmxvd2VyJTIwYm91cXVldHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt=""/>
+						<div className='learning_progress'>
+							<div className='learning_img'>
+								<img
+									src='https://images.unsplash.com/photo-1615385639736-362b69696227?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zmxvd2VyJTIwYm91cXVldHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60'
+									alt=''
+								/>
 							</div>
-							<div className="extra_details">
+							<div className='extra_details'>
 								<h4>Advanced Neurobiology</h4>
 								<small>ProfessorYan Zhang</small>
 								<br />
@@ -371,7 +395,7 @@ const Dashboard = () => {
 								<small>1hr 20m of 2hr 45m</small>
 								<br />
 								<br />
-								<button className="btn-primary">Resume</button>
+								<button className='btn-primary'>Resume</button>
 							</div>
 						</div>
 					</GridEqual>

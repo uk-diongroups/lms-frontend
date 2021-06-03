@@ -2,19 +2,22 @@
 	position: relative;
 	padding-left: 17px;
 	padding-right: 9px;
-	width: 250px;
+	width: 287px;
 	background-color: #1b2056;
 	height: 100vh;
 
 	&__logo {
 		text-align: center;
 		margin-top: 32px;
+		height: 49px;
+		width: 49px;
 	}
 
 	&__list {
 		margin-top: 34px;
 		li {
 			width: 100%;
+			margin-bottom: 15px;
 
 			a {
 				color: $white;
@@ -24,7 +27,7 @@
 				padding-left: 22px;
 				display: flex;
 				align-items: center;
-				font-size: 1rem;
+				font-size: 1.065rem;
 				font-family: inherit;
 				&.active {
 					background: rgba(134, 147, 201, 0.08);
@@ -34,9 +37,9 @@
 					color: $orange;
 				}
 				svg {
-					height: 16px;
-					width: 16px;
-					margin-right: 12px;
+					height: 24px;
+					width: 24px;
+					margin-right: 18px;
 				}
 			}
 		}

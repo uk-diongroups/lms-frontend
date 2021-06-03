@@ -28,7 +28,7 @@ const AuthBanner = styled.div`
 
 const AuthLayout = ({ children }) => {
 	return (
-		<div className='auth'>
+		<div className='auth font-avenir'>
 			<div className='auth__banner'></div>
 			<div className='auth__children'>{children}</div>
 		</div>

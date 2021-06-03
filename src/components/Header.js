@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import logo from 'assets/img/logo.svg';
+import { connect } from 'react-redux';
 import authbg from 'assets/img/authbg.png';
 import notification from 'assets/img/notification.svg';
 
@@ -63,7 +63,7 @@ const LeftWrapper = styled.div`
 
 const TopBar = styled.div``;
 
-const Header = ({ children }) => {
+const Header = ({ user }) => {
 	return (
 		<Wrapper>
 			<p></p>
@@ -73,10 +73,17 @@ const Header = ({ children }) => {
 					<span>6</span>
 				</div>
 				<img src={authbg} />
-				<p>Nimi Martins</p>
+				<p>
+					{user.first_name} {user.last_name}
+				</p>
 			</LeftWrapper>
 		</Wrapper>
 	);
 };
 
-export default Header;
+export default connect(
+	({ auth: { user } }) => ({
+		user,
+	}),
+	null,
+)(Header);

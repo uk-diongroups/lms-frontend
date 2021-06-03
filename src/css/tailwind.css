@@ -1,0 +1,11 @@
+@font-face {
+	font-family: AvenirNextRegular;
+	src: url(../assets/fonts/AvenirNextRegular.ttf);
+	font-style: normal;
+}
+
+@import 'tailwindcss/base';
+
+@import 'tailwindcss/components';
+
+@import 'tailwindcss/utilities';

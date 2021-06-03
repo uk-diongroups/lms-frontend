@@ -19,7 +19,7 @@ const Wrapper = styled.div`
 	margin-bottom: 16px;
 	button {
 		width: 120px;
-		font-family: 'Roboto', sans-serif;
+
 		font-weight: bold;
 	}
 `;
@@ -45,7 +45,6 @@ const Title = styled.div`
 		color: #23286b;
 		font-size: 1rem;
 		font-weight: 600;
-		font-family: PoppinsBold;
 	}
 	p {
 		font-size: 0.8125rem;

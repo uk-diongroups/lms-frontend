@@ -6,6 +6,7 @@ import { connect, useDispatch, useSelector } from 'react-redux';
 import { getCourses } from 'redux/actions/courses.action';
 import styled from 'styled-components';
 import { getLoadingState } from 'utils/functions';
+import Pagination from 'components/Pagination';
 
 export const Wrapper = styled.div`
 	padding: 56px;
@@ -16,53 +17,15 @@ export const Wrapper = styled.div`
 	}
 `;
 
-const Courses = ({ courses }) => {
+const Courses = ({ courses, totalCourses }) => {
 	const dispatch = useDispatch();
 
 	React.useEffect(() => {
 		dispatch(getCourses());
 	}, []);
 
-	console.log(courses);
 	const loadingCourses = useSelector(getLoadingState('getCourses'));
 
-	// const courses = [
-	// 	{
-	// 		img: figma,
-	// 		title: 'Learn Figma',
-	// 		author: 'Christopher Morgan',
-	// 		time: '6h 30min',
-	// 		percentage: 0,
-	// 		button: 'Start Course',
-	// 	},
-
-	// 	{
-	// 		img: analog,
-	// 		title: 'Analog photography',
-	// 		author: 'Gordon Norman',
-	// 		time: '3h 15min',
-	// 		percentage: 67,
-	// 		button: 'Resume',
-	// 	},
-
-	// 	{
-	// 		img: instagram,
-	// 		title: 'Master Instagram',
-	// 		author: 'Sophie Gill',
-	// 		time: '6h 30min',
-	// 		percentage: 99,
-	// 		button: 'Resume',
-	// 	},
-
-	// 	{
-	// 		img: drawing,
-	// 		title: 'Basics of drawing',
-	// 		author: 'Jean Tate',
-	// 		time: '11h 30min',
-	// 		percentage: 99,
-	// 		button: 'Resume',
-	// 	},
-	// ];
 	return (
 		<Wrapper>
 			{/* Top section */}
@@ -79,13 +42,15 @@ const Courses = ({ courses }) => {
 					))}
 				</section>
 			)}
+			{Boolean(totalCourses) && <Pagination count={totalCourses} getFunction={getCourses} pageSize={7} />}
 		</Wrapper>
 	);
 };
 
 export default connect(
-	({ courses: { courses } }) => ({
+	({ courses: { courses, totalCourses } }) => ({
 		courses,
+		totalCourses,
 	}),
 	null,
 )(Courses);

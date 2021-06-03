@@ -3,12 +3,12 @@ import { endLoading, loading } from 'redux/loader.dispatcher';
 import * as t from 'redux/types/courses.type';
 import { errorHandler } from 'utils/errors';
 
-export const getCourses = () => async (dispatch) => {
+export const getCourses = (skip = 1, limit = 7) => async (dispatch) => {
 	loading('getCourses');
 	try {
 		const {
 			data: { data },
-		} = await request.get(`/course`);
+		} = await request.get(`/course?page=${skip}&limit=${limit}`);
 
 		dispatch({
 			type: t.GET_COURSES,
